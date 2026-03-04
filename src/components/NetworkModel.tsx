@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const tabs = [
   {
@@ -109,17 +110,12 @@ export default function NetworkModel() {
           >
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="w-full md:w-1/3">
-                <div className="w-full aspect-square bg-gray-300 rounded-lg overflow-hidden">
-                  <div
-                    className="w-full h-full"
-                    style={{
-                      background:
-                        activeTab === "different"
-                          ? "linear-gradient(135deg, #2a1a0a 0%, #5a3a1a 100%)"
-                          : activeTab === "works"
-                          ? "linear-gradient(135deg, #1a2a3a 0%, #3a5a7a 100%)"
-                          : "linear-gradient(135deg, #0a1a2a 0%, #2a4a6a 100%)",
-                    }}
+                <div className="w-full aspect-square rounded-lg overflow-hidden relative">
+                  <Image
+                    src="/images/network-model.webp"
+                    alt="Network model - business people working together"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               </div>

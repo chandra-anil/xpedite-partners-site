@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -62,15 +63,13 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="w-full md:w-1/2 flex justify-center"
           >
-            <div className="w-80 h-96 rounded-lg overflow-hidden shadow-2xl bg-gradient-to-b from-gray-300 to-gray-500 relative">
-              {/* Stylized portrait placeholder */}
-              <div className="absolute inset-0 bg-gradient-to-b from-gray-200 via-gray-400 to-gray-600" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-                  <circle cx="60" cy="45" r="25" fill="#888" />
-                  <ellipse cx="60" cy="100" rx="35" ry="25" fill="#888" />
-                </svg>
-              </div>
+            <div className="w-80 h-96 rounded-lg overflow-hidden shadow-2xl relative">
+              <Image
+                src="/images/founder.jpg"
+                alt="Anil Chandra - Founder"
+                fill
+                className="object-cover"
+              />
             </div>
           </motion.div>
         </div>

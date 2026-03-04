@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const clients = [
   {
     title: "Technical Solution Providers",
     tagline: "You build the technology. We make the delivery succeed.",
+    image: "/images/who-serve-tech.avif",
     details: {
       heading: "Technical Solution Providers",
       intro:
@@ -23,6 +25,7 @@ const clients = [
   {
     title: "Medium/Large Organisations Delivering Projects and Products",
     tagline: "More rigour, structure, clarity and control across your delivery portfolio.",
+    image: "/images/who-serve-orgs.avif",
     details: {
       heading: "Medium/Large Organisations Delivering Projects and Products",
       intro:
@@ -39,6 +42,7 @@ const clients = [
   {
     title: "Medium/Large Organisations Starting Major Initiatives or Building New Products",
     tagline: "Ensure readiness, governance, and delivery discipline from day one.",
+    image: "/images/who-serve-initiatives.webp",
     details: {
       heading: "Major Initiatives or New Product Builds",
       intro:
@@ -96,17 +100,12 @@ export default function WhoWeServe() {
               transition={{ duration: 0.7, delay: index * 0.2 }}
               className="bg-[#f5f5f5] rounded-lg p-8 shadow-xl hover:shadow-2xl transition-all duration-500"
             >
-              <div className="w-16 h-16 bg-gray-300 rounded mb-4 overflow-hidden">
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background:
-                      index === 0
-                        ? "linear-gradient(135deg, #333 0%, #666 100%)"
-                        : index === 1
-                        ? "linear-gradient(135deg, #1a3a5c 0%, #4a7ab5 100%)"
-                        : "linear-gradient(135deg, #0a1628 0%, #2a4a6a 100%)",
-                  }}
+              <div className="w-16 h-16 rounded mb-4 overflow-hidden relative">
+                <Image
+                  src={client.image}
+                  alt={client.title}
+                  fill
+                  className="object-cover"
                 />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">{client.title}</h3>

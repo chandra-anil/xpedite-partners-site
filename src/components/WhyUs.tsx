@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const reasons = [
   "Deep expertise in delivery systems and operating models",
@@ -12,10 +13,10 @@ const reasons = [
 ];
 
 const clientLogos = [
-  { name: "Honeywell", color: "#c8102e" },
-  { name: "atturra", color: "#1a5c3a" },
-  { name: "Rio Tinto", color: "#c8102e" },
-  { name: "Water Corporation", color: "#003366" },
+  { name: "Honeywell", src: "/images/logo-honeywell.png" },
+  { name: "atturra", src: "/images/logo-atturra.png" },
+  { name: "Rio Tinto", src: "/images/logo-riotinto.png" },
+  { name: "Water Corporation", src: "/images/logo-watercorp.png" },
 ];
 
 export default function WhyUs() {
@@ -55,11 +56,15 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="w-full aspect-[4/3] rounded-lg overflow-hidden"
-              style={{
-                background: "linear-gradient(135deg, #8a6a4a 0%, #c4a478 100%)",
-              }}
-            />
+              className="w-full aspect-[4/3] rounded-lg overflow-hidden relative"
+            >
+              <Image
+                src="/images/why-us.jpg"
+                alt="Team collaboration"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
           </div>
         </div>
 
@@ -80,14 +85,15 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-white border-2 border-[#E8632B]/30 rounded-lg p-6 flex items-center justify-center h-24 hover:border-[#E8632B] transition-colors"
+              className="bg-white border-2 border-[#E8632B]/30 rounded-lg p-6 flex items-center justify-center h-24 hover:border-[#E8632B] transition-colors relative"
             >
-              <span
-                className="text-2xl font-bold"
-                style={{ color: logo.color }}
-              >
-                {logo.name}
-              </span>
+              <Image
+                src={logo.src}
+                alt={logo.name}
+                width={160}
+                height={60}
+                className="object-contain max-h-12"
+              />
             </motion.div>
           ))}
         </div>
