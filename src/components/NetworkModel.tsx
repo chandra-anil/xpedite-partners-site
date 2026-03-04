@@ -1,0 +1,146 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const tabs = [
+  {
+    id: "different",
+    label: "How we are different",
+    content: {
+      heading: "How we are different",
+      text: "Xpedite Partners operates on a modern, network-based consulting model. Instead of large, pyramid-style staffing, we provide senior, specialised expertise through a curated network of:",
+      items: [
+        "Delivery leaders and program directors",
+        "Product managers and product strategists",
+        "Agile coaches and transformation consultants",
+        "PMO and governance specialists",
+        "Solution and enterprise architects",
+        "Change and adoption professionals",
+        "Data and AI delivery experts",
+      ],
+    },
+  },
+  {
+    id: "works",
+    label: "How it works",
+    content: {
+      heading: "How it works",
+      text: "A modern, flexible, and high-calibre approach that ensures every engagement is staffed with exactly the right expertise at the right time.",
+      items: [
+        "Bespoke Team Formation \u2014 For each engagement, we assemble a hand-picked team tailored to the unique needs, scale, and complexity of the initiative.",
+        "A Trusted, High-Calibre Network \u2014 Our experts are proven practitioners with deep industry experience, not generalist consultants.",
+        "Recruitment Partnerships \u2014 When required, we leverage specialist recruitment partners to secure niche or high-demand skills rapidly.",
+        "Senior Expertise Only \u2014 Clients are never staffed with juniors or rotating consultants. Every contributor is a senior, outcome-focused professional.",
+        "Flexible and Scalable \u2014 The network model allows us to scale up quickly for large initiatives and scale down when required, keeping costs efficient and value high.",
+      ],
+    },
+  },
+  {
+    id: "matters",
+    label: "Why the Network Model matters",
+    content: {
+      heading: "Why the Network Model matters",
+      text: "A precision-built model that delivers higher quality, lower overheads, and stronger outcomes than traditional consulting approaches.",
+      items: [
+        "Clients receive the right expertise, not whoever is available.",
+        "We avoid the bureaucracy and overhead of large consultancies.",
+        "We provide specialist capability on demand.",
+        "Quality remains consistently high across engagements.",
+        "It enables a boutique consultancy to deliver enterprise-grade outcomes.",
+      ],
+    },
+  },
+];
+
+export default function NetworkModel() {
+  const [activeTab, setActiveTab] = useState("different");
+
+  const activeContent = tabs.find((t) => t.id === activeTab)!;
+
+  return (
+    <section id="network-model" className="py-20 px-6 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold text-center text-black mb-4"
+        >
+          THE NETWORK MODEL
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center text-gray-600 text-lg mb-12"
+        >
+          A high-performance taskforce of proven experts, assembled with purpose and precision
+        </motion.p>
+
+        {/* Tabs */}
+        <div className="flex flex-col md:flex-row border-b border-gray-200 mb-8">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex-1 py-4 px-6 text-lg font-semibold transition-all duration-300 ${
+                activeTab === tab.id
+                  ? "text-black bg-[#FDEBD5] border-b-3 border-[#E8632B]"
+                  : "text-gray-500 bg-[#f5f5f5] hover:text-black hover:bg-[#FDEBD5]/50"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="bg-[#FDEBD5] rounded-lg p-8 md:p-12"
+          >
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="w-full md:w-1/3">
+                <div className="w-full aspect-square bg-gray-300 rounded-lg overflow-hidden">
+                  <div
+                    className="w-full h-full"
+                    style={{
+                      background:
+                        activeTab === "different"
+                          ? "linear-gradient(135deg, #2a1a0a 0%, #5a3a1a 100%)"
+                          : activeTab === "works"
+                          ? "linear-gradient(135deg, #1a2a3a 0%, #3a5a7a 100%)"
+                          : "linear-gradient(135deg, #0a1a2a 0%, #2a4a6a 100%)",
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="w-full md:w-2/3">
+                <h3 className="text-2xl font-bold text-black mb-4">
+                  {activeContent.content.heading}
+                </h3>
+                <p className="text-gray-700 mb-6">{activeContent.content.text}</p>
+                <ul className="space-y-3">
+                  {activeContent.content.items.map((item, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="text-[#E8632B] mt-1 flex-shrink-0">&#8226;</span>
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+}
