@@ -4,12 +4,13 @@ export default function Logo({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center ${className}`}>
       <Image
-        src="/images/logo.png"
+        src="/images/logo-white.svg"
         alt="Xpedite Partners"
         width={220}
         height={60}
-        className="h-12 w-auto"
+        className="h-10 w-auto"
         priority
+        unoptimized
       />
     </div>
   );

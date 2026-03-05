@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
@@ -40,36 +38,29 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold text-white mb-6"
-          style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+        <h1
+          className="text-5xl md:text-7xl font-bold text-white mb-6 animate-hero-fade-in"
+          style={{ fontFamily: "Georgia, 'Times New Roman', serif", animationDelay: "0s" }}
         >
           Xpedite Partners
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl md:text-4xl text-[#E8632B] italic mb-10 font-light"
+        <p
+          className="text-2xl md:text-4xl text-[#E8632B] italic mb-10 font-light animate-hero-fade-in"
+          style={{ animationDelay: "0.2s" }}
         >
           The operating system behind successful digital delivery
-        </motion.p>
+        </p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-base md:text-lg text-white max-w-3xl mx-auto leading-relaxed"
+        <p
+          className="text-base md:text-lg text-white max-w-3xl mx-auto leading-relaxed animate-hero-fade-in"
+          style={{ animationDelay: "0.4s" }}
         >
           Xpedite Partners is a specialist consultancy that brings world-class delivery discipline to
           complex technology programs and digital product portfolios. Our frameworks, operating
           models, and leadership capability have been built from over two decades guiding large-scale
           transformation across some of Australia&apos;s most demanding environments.
-        </motion.p>
+        </p>
       </div>
     </section>
   );

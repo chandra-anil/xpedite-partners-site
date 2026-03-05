@@ -10,6 +10,9 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Home | xpeditepartners",
   description: "Xpedite Partners - The operating system behind successful digital delivery",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
