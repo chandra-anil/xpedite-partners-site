@@ -18,7 +18,7 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 bg-[#0a0a0a]">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-50"
+          className={`absolute inset-0 bg-cover bg-center opacity-50 ${animate ? "animate-ken-burns" : ""}`}
           style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
         />
         <div

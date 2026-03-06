@@ -8,6 +8,8 @@ const tabs = [
   {
     id: "different",
     label: "How we are different",
+    image: "/images/network-model.jpg",
+    imageAlt: "Business professionals collaborating in a team meeting",
     content: {
       heading: "How we are different",
       text: "Xpedite Partners operates on a modern, network-based consulting model. Instead of large, pyramid-style staffing, we provide senior, specialised expertise through a curated network of:",
@@ -25,6 +27,8 @@ const tabs = [
   {
     id: "works",
     label: "How it works",
+    image: "/images/network-model-works.jpg",
+    imageAlt: "Team working together in a collaborative office environment",
     content: {
       heading: "How it works",
       text: "A modern, flexible, and high-calibre approach that ensures every engagement is staffed with exactly the right expertise at the right time.",
@@ -40,6 +44,8 @@ const tabs = [
   {
     id: "matters",
     label: "Why the Network Model matters",
+    image: "/images/network-model-matters.jpg",
+    imageAlt: "Digital network visualization representing global connectivity",
     content: {
       heading: "Why the Network Model matters",
       text: "A precision-built model that delivers higher quality, lower overheads, and stronger outcomes than traditional consulting approaches.",
@@ -112,8 +118,8 @@ export default function NetworkModel() {
               <div className="w-full md:w-1/3">
                 <div className="w-full aspect-square rounded-lg overflow-hidden relative">
                   <Image
-                    src="/images/network-model.jpg"
-                    alt="Network model - business people working together"
+                    src={activeContent.image}
+                    alt={activeContent.imageAlt}
                     fill
                     className="object-cover"
                   />
