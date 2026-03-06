@@ -25,7 +25,7 @@ const services = [
     title: "Product Delivery Systems",
     description:
       "We create the conditions for strong digital product delivery. From product visioning and roadmap design to backlog structures, prioritisation models, and product governance, we help organisations turn ideas into sustainable, high-performing digital products.",
-    image: "/images/whatwedo-4.jpg",
+    image: "/images/whatwedo-4.webp",
   },
   {
     title: "Change Management and Adoption",

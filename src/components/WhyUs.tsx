@@ -59,7 +59,7 @@ export default function WhyUs() {
               className="w-full aspect-[4/3] rounded-lg overflow-hidden relative"
             >
               <Image
-                src="/images/why-us.jpg"
+                src="/images/why-us.webp"
                 alt="Team collaboration"
                 fill
                 className="object-cover"
