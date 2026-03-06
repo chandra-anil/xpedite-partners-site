@@ -15,24 +15,19 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background video */}
+      {/* Background image */}
       <div className="absolute inset-0 bg-[#0a0a0a]">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
-        >
-          <source src="/images/hero-bg.mov" type="video/mp4" />
-        </video>
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+        />
+        <div
+          className="absolute inset-0"
           style={{
             backgroundImage: `
               linear-gradient(135deg, transparent 30%, rgba(232, 99, 43, 0.08) 50%, transparent 70%),
-              radial-gradient(ellipse at 70% 50%, rgba(30, 60, 90, 0.4), transparent 70%),
-              radial-gradient(ellipse at 30% 50%, rgba(20, 40, 60, 0.4), transparent 70%)
+              radial-gradient(ellipse at 70% 50%, rgba(30, 60, 90, 0.5), transparent 70%),
+              radial-gradient(ellipse at 30% 50%, rgba(20, 40, 60, 0.5), transparent 70%)
             `,
           }}
         />

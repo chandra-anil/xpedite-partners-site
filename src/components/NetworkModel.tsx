@@ -112,7 +112,7 @@ export default function NetworkModel() {
               <div className="w-full md:w-1/3">
                 <div className="w-full aspect-square rounded-lg overflow-hidden relative">
                   <Image
-                    src="/images/network-model.webp"
+                    src="/images/network-model.jpg"
                     alt="Network model - business people working together"
                     fill
                     className="object-cover"

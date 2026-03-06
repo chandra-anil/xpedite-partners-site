@@ -8,7 +8,7 @@ const clients = [
   {
     title: "Technical Solution Providers",
     tagline: "You build the technology. We make the delivery succeed.",
-    image: "/images/who-serve-tech.avif",
+    image: "/images/who-serve-tech-new.jpg",
     details: {
       heading: "Technical Solution Providers",
       intro:
