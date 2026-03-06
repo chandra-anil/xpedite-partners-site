@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xpeditepartners.com.au/sitemap.xml
