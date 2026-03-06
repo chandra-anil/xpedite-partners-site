@@ -40,7 +40,7 @@ export default function About() {
                 execute technology investments.
               </p>
               <p className="italic leading-relaxed">
-                Anil&apos;s career spans senior roles across Honeywell, Capgemini, and Rio Tinto, where he
+                Anil&apos;s career spans senior roles across major global enterprises, where he
                 led enterprise-scale transformations, shaped global operating models, and uplifted
                 delivery capability across hundreds of teams. His expertise includes large portfolio
                 governance, modern delivery systems, AI productisation, and building high-performing
@@ -48,9 +48,8 @@ export default function About() {
                 sectors.
               </p>
               <p className="italic leading-relaxed">
-                Anil&apos;s experience includes guiding some of Australia&apos;s most complex organisations,
-                including Honeywell, Rio Tinto, Water Corporation, Triple Zero Victoria, and the
-                Reserve Bank of Australia. This depth allows us to bring unmatched clarity, discipline,
+                With experience guiding some of Australia&apos;s most complex organisations through
+                critical technology investments, we bring unmatched clarity, discipline,
                 and strategic delivery leadership to every engagement.
               </p>
             </motion.div>
