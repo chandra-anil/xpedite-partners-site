@@ -6,7 +6,6 @@ export default function Hero() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    // Small delay to ensure the page is painted before starting animation
     const timer = requestAnimationFrame(() => {
       setAnimate(true);
     });
@@ -15,12 +14,18 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background image */}
+      {/* Background video */}
       <div className="absolute inset-0 bg-[#0a0a0a]">
-        <div
-          className={`absolute inset-0 bg-cover bg-center opacity-50 ${animate ? "animate-ken-burns" : ""}`}
-          style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+          poster="/images/hero-bg.jpg"
+        >
+          <source src="/images/hero-bg-1080.mp4" type="video/mp4" />
+        </video>
         <div
           className="absolute inset-0"
           style={{
@@ -29,17 +34,6 @@ export default function Hero() {
               radial-gradient(ellipse at 70% 50%, rgba(30, 60, 90, 0.5), transparent 70%),
               radial-gradient(ellipse at 30% 50%, rgba(20, 40, 60, 0.5), transparent 70%)
             `,
-          }}
-        />
-        {/* Grid overlay for server room look */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(90deg, rgba(100,150,200,0.15) 1px, transparent 1px),
-              linear-gradient(rgba(100,150,200,0.15) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
           }}
         />
       </div>
