@@ -257,13 +257,13 @@ export default function PathToValueContent() {
               A Path to Value session takes 90–120 minutes and produces a context-specific prioritised improvement plan your leadership team can act on immediately.
             </p>
             <a
-              href="mailto:anil@xpeditepartners.com.au?subject=Path%20to%20Value%20—%20Enquiry"
+              href="mailto:info@xpeditepartners.com.au?subject=Path%20to%20Value%20—%20Enquiry"
               className="inline-block px-10 py-4 bg-[#E8632B] text-white rounded font-semibold text-lg hover:bg-[#c5521f] transition-colors"
             >
               Get in Touch
             </a>
             <p className="text-white/30 text-xs mt-4">
-              anil@xpeditepartners.com.au
+              info@xpeditepartners.com.au
             </p>
           </motion.div>
         </div>
