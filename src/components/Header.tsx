@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import Logo from "./Logo";
 
 const navItems = [
-  { label: "What We Do", href: "#what-we-do" },
-  { label: "Who We Serve", href: "#who-we-serve" },
-  { label: "Network Model", href: "#network-model" },
+  { label: "What We Do", href: "/#what-we-do" },
+  { label: "Who We Serve", href: "/#who-we-serve" },
+  { label: "Network Model", href: "/#network-model" },
   { label: "Frameworks", href: "/frameworks" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "About", href: "#about" },
+  { label: "Why Us", href: "/#why-us" },
+  { label: "About", href: "/#about" },
 ];
 
 export default function Header() {
@@ -18,8 +18,12 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => item.href.replace("#", ""));
+      const sections = navItems.map((item) => {
+        const hash = item.href.split("#")[1];
+        return hash || "";
+      });
       for (let i = sections.length - 1; i >= 0; i--) {
+        if (!sections[i]) continue;
         const el = document.getElementById(sections[i]);
         if (el) {
           const rect = el.getBoundingClientRect();
@@ -50,7 +54,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               className={`px-4 py-2 text-sm font-medium border rounded transition-all duration-300 ${
-                activeSection === item.href.replace("#", "")
+                activeSection === (item.href.split("#")[1] || item.href)
                   ? "bg-[#E8632B] border-[#E8632B] text-white"
                   : "border-white/40 text-white/90 hover:border-[#E8632B] hover:text-[#E8632B]"
               }`}
@@ -84,7 +88,7 @@ export default function Header() {
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-2 text-sm font-medium border rounded transition-all duration-300 ${
-                activeSection === item.href.replace("#", "")
+                activeSection === (item.href.split("#")[1] || item.href)
                   ? "bg-[#E8632B] border-[#E8632B] text-white"
                   : "border-white/40 text-white/90 hover:border-[#E8632B] hover:text-[#E8632B]"
               }`}
