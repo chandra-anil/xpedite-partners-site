@@ -115,6 +115,21 @@ export default function PathToValueContent() {
         </div>
       </section>
 
+      {/* Framework visual */}
+      <section className="py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+            <Image
+              src="/images/ptv-framework-visual.webp"
+              alt="Path to Value framework - four interconnected layers from investment direction through to value realisation"
+              width={1000}
+              height={700}
+              className="w-full h-auto"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Framework overview */}
       <section id="how-it-works" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">

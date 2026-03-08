@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Xpedite Partners Website
 
-## Getting Started
+## Quick Reference
 
-First, run the development server:
+- **Status:** Active
+- **Aliases:** Xpedite site, XP website
+- **Score:** 20/25
+- **Owner:** Xpedite Partners
+- **Started:** 2026-02-27
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Summary
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Corporate website for Xpedite Partners, rebuilt in Next.js and deployed on Vercel. This project is the public-facing authority asset for consulting positioning, service clarity, and lead conversion.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Details
 
-## Learn More
+- **Live URL:** https://xpedite-partners-site.vercel.app
+- **Domain:** xpeditepartners.com.au (still on Wix, cutover pending)
+- **Repo:** github.com/chandra-anil/xpedite-partners-site (private)
+- **Workspace clone:** `projects/xpedite-partners-site/`
+- **Stack:** Next.js 16 + React 19 + TypeScript + Tailwind CSS v4 + Vercel
+- **Full technical reference:** See `TOOLS.md` → Xpedite Partners Website section
 
-To learn more about Next.js, take a look at the following resources:
+## Completed
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] Website rebuilt from Wix to Next.js
+- [x] Vercel deployment configured
+- [x] SSH deploy key and repo wiring configured
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## TODO
 
-## Deploy on Vercel
+- [ ] Point xpeditepartners.com.au to Vercel
+- [ ] Compress oversized images (`whatwedo-4.jpg`, `why-us.jpg`)
+- [ ] Final SEO pass before domain cutover
+- [ ] Add/update service case studies and social proof
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Vercel Dashboard](https://vercel.com)
+- [GitHub Repo](https://github.com/chandra-anil/xpedite-partners-site)
+- [Handover Doc](HANDOVER.md)
+
+---
+
+_Project folder: `projects/xpedite-partners-site/`_
