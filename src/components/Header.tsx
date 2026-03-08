@@ -7,6 +7,7 @@ const navItems = [
   { label: "What We Do", href: "#what-we-do" },
   { label: "Who We Serve", href: "#who-we-serve" },
   { label: "Network Model", href: "#network-model" },
+  { label: "Frameworks", href: "/frameworks" },
   { label: "Why Us", href: "#why-us" },
   { label: "About", href: "#about" },
 ];
