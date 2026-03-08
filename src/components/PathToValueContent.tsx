@@ -116,14 +116,9 @@ export default function PathToValueContent() {
         </div>
       </section>
 
-      {/* Framework visual */}
-      <section className="py-16 px-6">
-        <PtvFrameworkVisual />
-      </section>
-
       {/* Framework overview */}
       <section id="how-it-works" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
             <p className="text-[#E8632B] text-sm font-semibold tracking-widest uppercase mb-4 text-center">
               The Framework
@@ -132,34 +127,42 @@ export default function PathToValueContent() {
               13 Elements Across 4 Layers
             </h2>
             <p className="text-white/60 text-center max-w-2xl mx-auto mb-12">
-              Every delivery system — whether Agile, hybrid, or traditional — comprises these interconnected capabilities. The question isn&apos;t whether they exist, but which ones matter most for your organisation right now.
+              Every delivery system comprises these interconnected capabilities. The question isn&apos;t whether they exist, but which ones matter most for your organisation right now.
             </p>
 
-            <div className="space-y-6">
-              {layers.map((layer, i) => (
-                <div key={i} className="flex gap-4 items-start">
-                  <div
-                    className="w-1 rounded-full self-stretch flex-shrink-0"
-                    style={{ backgroundColor: layer.colour }}
-                  />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2" style={{ color: layer.colour }}>
-                      {layer.name}
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {layer.elements.map((el) => (
-                        <span
-                          key={el}
-                          className="text-xs px-3 py-1 rounded border text-white/70"
-                          style={{ borderColor: `${layer.colour}40` }}
-                        >
-                          {el}
-                        </span>
-                      ))}
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              {/* Layers list */}
+              <div className="w-full md:w-1/2 space-y-6">
+                {layers.map((layer, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div
+                      className="w-1 rounded-full self-stretch flex-shrink-0"
+                      style={{ backgroundColor: layer.colour }}
+                    />
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2" style={{ color: layer.colour }}>
+                        {layer.name}
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {layer.elements.map((el) => (
+                          <span
+                            key={el}
+                            className="text-xs px-3 py-1 rounded border text-white/70"
+                            style={{ borderColor: `${layer.colour}40` }}
+                          >
+                            {el}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Animated visual */}
+              <div className="w-full md:w-1/2">
+                <PtvFrameworkVisual />
+              </div>
             </div>
           </motion.div>
         </div>
