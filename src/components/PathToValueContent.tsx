@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -57,7 +58,7 @@ export default function PathToValueContent() {
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeIn}>
             <p className="text-[#E8632B] text-sm font-semibold tracking-widest uppercase mb-4">
-              Consulting Capability
+              Delivery Diagnostic
             </p>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Path to Value
@@ -169,31 +170,52 @@ export default function PathToValueContent() {
               From Assessment to Action Plan
             </h2>
 
-            <div className="space-y-8">
+            <div className="space-y-12">
               {[
                 {
                   step: "1",
                   title: "Describe Your Situation",
                   desc: "We configure the model for your delivery model, scale, industry, uncertainty level, and regulatory environment. Then we assess your current capability at the practice level — 68 individual practices across 13 elements.",
+                  screenshots: ["/images/ptv-context.webp", "/images/ptv-assessment.webp"],
+                  alts: ["Context configuration — tailor the model to your organisation", "Practice-level capability assessment across 68 practices"],
                 },
                 {
                   step: "2",
                   title: "See What to Prioritise",
                   desc: "The model weights every gap by how much it impacts value delivery in your specific context. You get a ranked priority list — not a flat radar chart. Adjust your strategic priority (cost reduction vs speed-to-value) and watch priorities shift in real time.",
+                  screenshots: ["/images/ptv-priorities.webp"],
+                  alts: ["Context-weighted priority rankings — where closing gaps delivers the most value"],
                 },
                 {
                   step: "3",
                   title: "Get Your Plan",
                   desc: "Recommended targets are generated for each practice, phased across three horizons. Targets are calibrated to your context and strategic priority — higher-leverage practices get more ambitious targets. You get a clear action plan: where you are, where to aim, and what to work on first.",
+                  screenshots: ["/images/ptv-plan.webp"],
+                  alts: ["Phased improvement plan with targets across three horizons"],
                 },
               ].map((item) => (
-                <div key={item.step} className="flex gap-6 items-start">
-                  <div className="w-10 h-10 rounded-full bg-[#E8632B] text-white flex items-center justify-center font-bold flex-shrink-0">
-                    {item.step}
+                <div key={item.step}>
+                  <div className="flex gap-6 items-start mb-6">
+                    <div className="w-10 h-10 rounded-full bg-[#E8632B] text-white flex items-center justify-center font-bold flex-shrink-0">
+                      {item.step}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
+                      <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                    <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
+                  <div className={`grid gap-4 ${item.screenshots.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1'}`}>
+                    {item.screenshots.map((src, i) => (
+                      <div key={i} className="rounded-lg overflow-hidden border border-white/10 shadow-2xl">
+                        <Image
+                          src={src}
+                          alt={item.alts[i]}
+                          width={1400}
+                          height={900}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}
