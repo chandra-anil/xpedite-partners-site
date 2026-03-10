@@ -3,9 +3,9 @@ import Footer from "@/components/Footer";
 import FrameworksContent from "@/components/FrameworksContent";
 
 export const metadata = {
-  title: "Frameworks | Xpedite Partners",
+  title: "Delivery System Frameworks | Xpedite Partners",
   description:
-    "Proprietary frameworks and diagnostic tools built from 20+ years of delivery leadership across complex technology programs.",
+    "14 proprietary frameworks and diagnostic tools built from 20+ years of delivery leadership. Diagnose, design, build, and sustain delivery excellence.",
 };
 
 export default function FrameworksPage() {
