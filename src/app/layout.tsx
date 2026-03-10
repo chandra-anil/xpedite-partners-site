@@ -20,6 +20,12 @@ export const metadata: Metadata = {
     "IT consulting Australia",
     "portfolio management",
     "delivery governance",
+    "PMO consulting",
+    "program delivery",
+    "digital transformation consultancy Australia",
+    "delivery operating model",
+    "delivery excellence",
+    "agile coaching Brisbane",
   ],
   metadataBase: new URL("https://xpeditepartners.com.au"),
   alternates: {

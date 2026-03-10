@@ -43,7 +43,10 @@ export default function Hero() {
           className={`text-5xl md:text-7xl font-bold text-white mb-6 opacity-0 ${animate ? "animate-hero-fade-in" : ""}`}
           style={{ fontFamily: "Georgia, 'Times New Roman', serif", animationDelay: "0s" }}
         >
-          Xpedite Partners
+          Xpedite Partners{" "}
+          <span className="block text-2xl md:text-3xl font-normal mt-2 text-white/70">
+            Delivery Consultancy &amp; Digital Transformation — Brisbane, Australia
+          </span>
         </h1>
 
         <p

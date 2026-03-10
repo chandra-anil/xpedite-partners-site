@@ -6,6 +6,15 @@ export const metadata = {
   title: "Delivery System Frameworks | Xpedite Partners",
   description:
     "14 proprietary frameworks and diagnostic tools built from 20+ years of delivery leadership. Diagnose, design, build, and sustain delivery excellence.",
+  openGraph: {
+    title: "Delivery System Frameworks | Xpedite Partners",
+    description:
+      "14 proprietary frameworks and diagnostic tools built from 20+ years of delivery leadership.",
+    url: "https://xpeditepartners.com.au/frameworks",
+  },
+  alternates: {
+    canonical: "/frameworks",
+  },
 };
 
 export default function FrameworksPage() {
