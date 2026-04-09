@@ -35,6 +35,9 @@ export interface Industry {
   heroSub: string;
   heroStats: IndustryStat[];
   soundFamiliar: { icon: string; text: string }[];
+  soundFamiliarSub: string;
+  proofPointsSub: string;
+  processSteps: { icon: string; title: string; body: string }[];
   systemProblemTitle: string;
   systemProblemBody: string;
   sections: IndustrySection[];
@@ -75,6 +78,32 @@ export const industries: Industry[] = [
       { icon: "alert", text: "You find out a job\u2019s losing money when the accountant calls, not when you can still fix it" },
       { icon: "clock", text: "You\u2019re working 60-hour weeks and still feel like you\u2019re behind" },
       { icon: "clipboard", text: "Compliance paperwork is eating your weekends" },
+    ],
+    soundFamiliarSub:
+      "If you\u2019re running a construction business in South-East Queensland right now, you\u2019re probably nodding at most of these.",
+    proofPointsSub:
+      "These aren\u2019t projections. They\u2019re documented results from builders who\u2019ve made the shift.",
+    processSteps: [
+      {
+        icon: "search",
+        title: "We learn your business",
+        body: "We spend time on your sites, in your office, with your people. We look at how jobs flow from quote to completion \u2014 where time gets wasted, where money leaks, where things fall between the cracks.",
+      },
+      {
+        icon: "bar-chart",
+        title: "We show you the picture",
+        body: "You get a clear, plain-English view of where your business is strong and where it\u2019s costing you. No jargon, no 200-page report. Just an honest assessment with real numbers.",
+      },
+      {
+        icon: "tool",
+        title: "We build the fix \u2014 with you",
+        body: "We set up the right tools and processes for your size and type of work. We make sure your team actually uses them. We stay until the new way of working sticks \u2014 not just until the software is installed.",
+      },
+      {
+        icon: "check-circle",
+        title: "You run it from here",
+        body: "The goal is a business that runs properly without us. Better visibility, tighter margins, less firefighting. You manage by looking at a dashboard, not by being on every site.",
+      },
     ],
 
     systemProblemTitle: "It\u2019s not one problem. It\u2019s how your business runs.",
@@ -295,6 +324,32 @@ export const industries: Industry[] = [
       { icon: "clipboard", text: "Safety paperwork, contractor compliance, and regulatory reporting consume whole teams" },
       { icon: "puzzle", text: "You bought the technology but your people are still running the old way alongside it" },
     ],
+    soundFamiliarSub:
+      "If you\u2019re running a mining operation in Australia right now, you\u2019re probably nodding at most of these.",
+    proofPointsSub:
+      "These aren\u2019t projections. They\u2019re documented results from mining operators who\u2019ve made the shift.",
+    processSteps: [
+      {
+        icon: "search",
+        title: "We learn your operation",
+        body: "We spend time on your site \u2014 in the pit, the control room, the planning office. We look at how information flows from drill to dump, where decisions get delayed, and where systems don\u2019t talk to each other.",
+      },
+      {
+        icon: "bar-chart",
+        title: "We show you the picture",
+        body: "You get a clear, straight-talking view of where your operation is strong and where it\u2019s bleeding time, production, and money. No jargon, no 200-slide deck. Just an honest assessment with real numbers.",
+      },
+      {
+        icon: "tool",
+        title: "We build the fix \u2014 with you",
+        body: "We set up the right systems and processes for your operation. We make sure your people actually use them. We stay until the new way of working sticks \u2014 not just until the vendor\u2019s gone.",
+      },
+      {
+        icon: "check-circle",
+        title: "You run it from here",
+        body: "The goal is an operation that runs properly without us. Better visibility, tighter cost control, less firefighting. You manage by dashboard, not by radio and spreadsheet.",
+      },
+    ],
 
     systemProblemTitle: "It\u2019s not the gear. It\u2019s how the operation runs.",
     systemProblemBody:
@@ -483,6 +538,251 @@ export const industries: Industry[] = [
     ctaHeadline: "Let\u2019s talk about what\u2019s actually slowing you down",
     ctaBody:
       "No consultancy theatre. No death-by-PowerPoint. We\u2019ll spend time at your operation \u2014 on site, in the control room, with your people. You\u2019ll get a clear, honest picture of where your systems are costing you production, money, and time, and a practical plan to fix it. 30 minutes. No pitch. Just a straight conversation.",
+    ctaButtonLabel: "Book a Conversation",
+  },
+  {
+    slug: "utilities",
+    name: "Utilities",
+    tagline: "Built for utilities. Not ivory towers.",
+    heroImage: "/images/utilities-hero.webp",
+    metaTitle: "Utilities Delivery & Technology Consulting Australia | Xpedite Partners",
+    metaDescription:
+      "Helping Australian electricity, gas, and water utilities get more from their assets, people, and systems. Practical consulting for network operators and utility services contractors.",
+    heroHeadline:
+      "$87 billion in network investment ahead. An aging workforce walking out the door. And systems that still don\u2019t talk to each other.",
+    heroSub:
+      "Australia\u2019s utilities sector is facing the biggest transformation in its history \u2014 energy transition, aging infrastructure, tighter regulation, and a workforce crisis all hitting at once. We help you fix the delivery and operating systems so you can actually keep up.",
+    heroStats: [
+      { value: "14,000+", label: "Electrician shortfall by 2030", source: "PSO Workforce Plan" },
+      { value: "$87B", label: "Transmission investment needed by 2050", source: "AEMO ISP" },
+      { value: "20\u201322%", label: "Capital spend increase proposed by networks", source: "IEEFA" },
+      { value: "300,000", label: "Infrastructure worker shortfall by 2027", source: "Infrastructure Australia" },
+    ],
+
+    soundFamiliar: [
+      { icon: "users", text: "Your most experienced lineworkers are retiring and there\u2019s nobody with 20 years\u2019 knowledge coming up behind them" },
+      { icon: "clock", text: "Unplanned outages are increasing because your network assets are aging faster than you can replace them" },
+      { icon: "layers", text: "Your SCADA system doesn\u2019t talk to your asset management system, which doesn\u2019t talk to your work management system" },
+      { icon: "alert", text: "Capital works programs keep slipping \u2014 and the regulator wants to know why you\u2019re underspending your allowance" },
+      { icon: "shield", text: "Safety and compliance reporting takes whole teams and still relies on spreadsheets and manual processes" },
+      { icon: "trending-down", text: "Maintenance crews spend more time on paperwork and travel than actually fixing things in the field" },
+      { icon: "puzzle", text: "You\u2019ve invested in new systems but half the field crews are still running off paper forms and local knowledge" },
+      { icon: "clipboard", text: "Regulatory submissions, safety audits, and environmental reporting consume months of effort every cycle" },
+    ],
+    soundFamiliarSub:
+      "If you\u2019re running a utility or network operation in Australia right now, you\u2019re probably nodding at most of these.",
+    proofPointsSub:
+      "These aren\u2019t projections. They\u2019re documented results from utilities that have made the shift.",
+    processSteps: [
+      {
+        icon: "search",
+        title: "We learn your operation",
+        body: "We spend time in your control room, with your field crews, and in your planning offices. We look at how work flows from fault detection to completion \u2014 where decisions get delayed, where data gets lost, and where systems don\u2019t connect.",
+      },
+      {
+        icon: "bar-chart",
+        title: "We show you the picture",
+        body: "You get a clear, straight-talking view of where your operation is strong and where it\u2019s bleeding time, reliability, and money. No jargon, no 200-slide deck. Just an honest assessment with real numbers.",
+      },
+      {
+        icon: "tool",
+        title: "We build the fix \u2014 with you",
+        body: "We set up the right systems and processes for your network and your people. We make sure your field crews and planners actually use them. We stay until the new way of working sticks \u2014 not just until the vendor\u2019s gone.",
+      },
+      {
+        icon: "check-circle",
+        title: "You run it from here",
+        body: "The goal is a utility that runs properly without us. Better asset visibility, fewer unplanned outages, less firefighting. You manage by dashboard, not by radio and reactive dispatch.",
+      },
+    ],
+
+    systemProblemTitle: "It\u2019s not the network. It\u2019s how the business runs around it.",
+    systemProblemBody:
+      "Most utilities have invested in network assets and field technology. But the systems connecting them \u2014 how work flows from fault detection to dispatch to completion to reporting \u2014 are held together with spreadsheets, emails, and tribal knowledge. When your SCADA, asset management, work management, and finance systems don\u2019t talk to each other, you\u2019re making million-dollar capital decisions on incomplete information. The technology to fix this exists. But 70% of digital transformations in utilities fail because nobody changes how the organisation actually works around the new tools. That\u2019s the gap we close.",
+
+    sections: [
+      {
+        id: "assets",
+        icon: "tool",
+        image: "/images/utilities-grid.webp",
+        title: "Get ahead of your aging network before it gets ahead of you",
+        intro:
+          "A significant proportion of Australia\u2019s network infrastructure is reaching end of life. Distribution networks are proposing 20\u201322% increases in capital spend just to keep up with replacement and augmentation. But throwing money at assets without the right systems means you\u2019re replacing things too early, too late, or in the wrong order.",
+        painPoints: [
+          {
+            icon: "alert",
+            hook: "Replacing assets on age, not condition",
+            body: "Without condition monitoring, you\u2019re either replacing assets too early (wasting capital) or too late (after they\u2019ve already failed). Predictive maintenance reduces unplanned failures by 70\u201375% and cuts maintenance costs 25\u201330%.",
+          },
+          {
+            icon: "eye-off",
+            hook: "No single view of asset health",
+            body: "Your asset register lives in one system, maintenance history in another, and condition data in a third. Getting a complete picture means chasing data across platforms and hoping nothing was missed.",
+          },
+          {
+            icon: "trending-down",
+            hook: "Reactive maintenance eating your budget",
+            body: "Unplanned work costs 4\u20135x more than planned work. Every emergency callout displaces scheduled maintenance, creating a cycle where you\u2019re always behind and the backlog keeps growing.",
+          },
+        ],
+        outcomes: [
+          {
+            title: "Asset decisions",
+            before: "You replace assets based on age and gut feel. Some fail before replacement. Others get swapped out with years of life left.",
+            after: "Condition-based data drives every replacement decision. You spend capital where it matters most, extending asset life by 20\u201340% where safe to do so.",
+          },
+          {
+            title: "Maintenance approach",
+            before: "Your team spends most of its time reacting to failures and emergency callouts. Planned work keeps getting bumped.",
+            after: "Predictive analytics flag problems before they become failures. Maintenance shifts from reactive to planned. Unplanned outages drop, reliability climbs.",
+          },
+          {
+            title: "Asset visibility",
+            before: "Getting a complete picture of network health means pulling data from 4+ systems and reconciling it manually. Nobody fully trusts the numbers.",
+            after: "One integrated view of asset condition, maintenance history, and risk. You make capital and maintenance decisions with confidence, not guesswork.",
+          },
+        ],
+      },
+      {
+        id: "projects",
+        icon: "dollar",
+        image: "/images/utilities-field.webp",
+        title: "Deliver your capital program without the cost blowouts",
+        intro:
+          "With $87 billion in transmission investment ahead and networks proposing significant capital increases, the pressure to deliver on time and on budget has never been higher. Regulators are watching. Customers are paying. And the workforce to deliver it all is in short supply.",
+        painPoints: [
+          {
+            icon: "clock",
+            hook: "Programs slipping quarter after quarter",
+            body: "Capital works programs consistently underspend against allowances \u2014 not because the money isn\u2019t there, but because delivery capacity can\u2019t keep up. Regulators notice, and it affects future determinations.",
+          },
+          {
+            icon: "shuffle",
+            hook: "Contractors with no common systems",
+            body: "Multiple delivery partners, multiple reporting formats, no single view of program progress. The gaps between contracts are where the real risks and cost overruns live.",
+          },
+          {
+            icon: "x-circle",
+            hook: "Project costs discovered too late",
+            body: "Cost overruns are identified in execution, long after scope and estimates were locked in. By the time you see the problem, the money is already spent.",
+          },
+        ],
+        outcomes: [
+          {
+            title: "Program delivery",
+            before: "You track capital programs in spreadsheets. Progress reporting depends on which contractor sends their update first. Underspend surprises hit at year-end.",
+            after: "One program view across all contractors and work streams. Progress, spend, and risk visible in real time. You deliver against your regulatory allowance consistently.",
+          },
+          {
+            title: "Cost control",
+            before: "You find out a project is over budget weeks after the overspend started. Variation claims pile up and there\u2019s no audit trail for scope changes.",
+            after: "Real-time cost tracking against baseline. Variations require digital approval with full history. You intervene while there\u2019s still room to course-correct.",
+          },
+          {
+            title: "Contractor management",
+            before: "Each delivery partner reports differently. Integrating across contracts takes days of manual effort every reporting cycle.",
+            after: "Common reporting framework, standardised milestones, one source of truth. You manage the program, not the spreadsheets.",
+          },
+        ],
+      },
+      {
+        id: "people",
+        icon: "hard-hat",
+        image: "/images/utilities-workers.webp",
+        title: "Do more with the people you\u2019ve got \u2014 because you can\u2019t find more",
+        intro:
+          "Australia faces a shortfall of 14,000 electricians by 2030 and 300,000 infrastructure workers by 2027. You\u2019re not going to hire your way out of this. The utilities that win will be the ones that get more from every field crew, every planner, and every hour on the network.",
+        painPoints: [
+          {
+            icon: "door-open",
+            hook: "Decades of knowledge walking out the door",
+            body: "Your most experienced operators and lineworkers are retiring. Their knowledge of the network \u2014 the quirks, the workarounds, the history \u2014 lives in their heads, not in any system.",
+          },
+          {
+            icon: "clock",
+            hook: "Field crews drowning in admin",
+            body: "Crews spend hours on safety paperwork, job close-outs, and compliance forms. That\u2019s wrench time you\u2019re not getting back. Digital field solutions reclaim 1\u20132 hours per crew per day.",
+          },
+          {
+            icon: "users",
+            hook: "Apprentice pipeline can\u2019t keep up",
+            body: "Australia needs 20,500 apprentice electricians commencing annually \u2014 40% higher than recent averages. There\u2019s even a shortage of trainers to train them.",
+          },
+        ],
+        outcomes: [
+          {
+            title: "Knowledge capture",
+            before: "Critical network knowledge lives in the heads of your most experienced people. When they retire, it goes with them.",
+            after: "Digital SOPs, structured handover processes, and knowledge management systems. The network\u2019s history and quirks are captured in the system, not lost at retirement.",
+          },
+          {
+            title: "Field productivity",
+            before: "Crews spend 30\u201340% of their day on paperwork, travel coordination, and chasing information. Actual wrench time is lower than it should be.",
+            after: "Mobile work management, digital safety forms, and real-time job dispatch. Crews get the right information before they leave the depot and close jobs from the field.",
+          },
+          {
+            title: "Workforce development",
+            before: "New starters take years to be effective. Training is ad-hoc and depends on whoever happens to be available to mentor them.",
+            after: "Structured competency frameworks, digital training records, and clear progression pathways. People get productive faster and you can prove their competency to regulators.",
+          },
+        ],
+      },
+      {
+        id: "digital",
+        icon: "monitor",
+        image: "/images/utilities-control.webp",
+        title: "Make your systems actually work together",
+        intro:
+          "The average utility runs dozens of disconnected platforms \u2014 SCADA, GIS, asset management, work management, outage management, finance, safety. Each one works on its own. Together, they\u2019re a mess. And the gap between what technology can do and what most mid-tier utilities actually use is enormous.",
+        painPoints: [
+          {
+            icon: "layers",
+            hook: "Data in silos, decisions in the dark",
+            body: "Your SCADA system knows network state. Your GIS knows asset location. Your work management knows job status. But nobody has the full picture without hours of manual reconciliation.",
+          },
+          {
+            icon: "x-circle",
+            hook: "Digital projects that don\u2019t deliver",
+            body: "You\u2019ve invested in platforms that promised transformation. Twelve months later, adoption is patchy and the old spreadsheets are still running alongside. 70% of utility digital transformations fail.",
+          },
+          {
+            icon: "compass",
+            hook: "OT/IT convergence is a minefield",
+            body: "Connecting operational technology to IT systems is essential for smart grid and advanced analytics. But security concerns, legacy protocols, and organisational silos make it one of the hardest problems in the sector.",
+          },
+        ],
+        outcomes: [
+          {
+            title: "Connected systems",
+            before: "Getting a complete operational picture means pulling data from 5+ systems and reconciling formats. By the time you have the answer, the situation has changed.",
+            after: "Integrated data architecture where SCADA, GIS, asset management, and work management speak the same language. One source of truth for operations and planning.",
+          },
+          {
+            title: "Digital adoption",
+            before: "You bought the system. The vendor installed it. Six months later, adoption is patchy and the old ways persist alongside the new platform.",
+            after: "Technology implemented around how your people actually work. Change management built in from day one. Adoption sticks because the system makes their job easier, not harder.",
+          },
+          {
+            title: "Regulatory reporting",
+            before: "Every regulatory submission is a months-long manual exercise. Teams scramble to pull data, reconcile numbers, and compile reports under deadline pressure.",
+            after: "Automated data collection feeds directly into reporting frameworks. Submissions are faster, more accurate, and auditable. Your team focuses on insights, not data entry.",
+          },
+        ],
+      },
+    ],
+
+    proofPoints: [
+      { value: "70\u201375%", label: "Reduction in unplanned asset failures with predictive maintenance", source: "DOE / Deloitte" },
+      { value: "25\u201330%", label: "Lower maintenance costs with condition-based approach", source: "McKinsey" },
+      { value: "10:1", label: "Average ROI from predictive maintenance programs", source: "U.S. DOE" },
+      { value: "20\u201340%", label: "Asset life extension with condition monitoring", source: "Industry benchmark" },
+      { value: "52.7%", label: "Less downtime with proactive vs reactive maintenance", source: "Industry research" },
+      { value: "70%", label: "Of utility digital transformations fail without proper implementation", source: "Industry benchmark" },
+    ],
+
+    ctaHeadline: "Let\u2019s talk about what\u2019s actually slowing your network down",
+    ctaBody:
+      "No consultancy theatre. No death-by-PowerPoint. We\u2019ll spend time with your operation \u2014 in the control room, with your field crews, in your planning sessions. You\u2019ll get a clear, honest picture of where your systems are costing you reliability, money, and time, and a practical plan to fix it. 30 minutes. No pitch. Just a straight conversation.",
     ctaButtonLabel: "Book a Conversation",
   },
 ];
