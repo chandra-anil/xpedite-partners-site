@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { xdsTools } from "@/data/xds-tools";
+import { industries } from "@/data/industries";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const toolPages: MetadataRoute.Sitemap = xdsTools.map((tool) => ({
@@ -7,6 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
+  }));
+
+  const industryPages: MetadataRoute.Sitemap = industries.map((ind) => ({
+    url: `https://xpeditepartners.com.au/industries/${ind.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
   }));
 
   return [
@@ -29,5 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...toolPages,
+    ...industryPages,
   ];
 }

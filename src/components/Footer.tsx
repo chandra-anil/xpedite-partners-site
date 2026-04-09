@@ -53,6 +53,11 @@ export default function Footer() {
                     Team Topology Designer
                   </Link>
                 </li>
+                <li>
+                  <Link href="/industries/construction" className="text-white/60 hover:text-[#E8632B] transition-colors text-sm">
+                    Construction Industry
+                  </Link>
+                </li>
               </ul>
             </div>
 
