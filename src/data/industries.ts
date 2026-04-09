@@ -549,25 +549,25 @@ export const industries: Industry[] = [
     metaDescription:
       "Helping Australian electricity, gas, and water utilities get more from their assets, people, and systems. Practical consulting for network operators and utility services contractors.",
     heroHeadline:
-      "$87 billion in network investment ahead. An aging workforce walking out the door. And systems that still don\u2019t talk to each other.",
+      "Pipes from the 1960s. Power lines at end of life. And not enough people to fix either.",
     heroSub:
-      "Australia\u2019s utilities sector is facing the biggest transformation in its history \u2014 energy transition, aging infrastructure, tighter regulation, and a workforce crisis all hitting at once. We help you fix the delivery and operating systems so you can actually keep up.",
+      "Australia\u2019s electricity, water, and gas utilities are all hitting the same wall \u2014 aging infrastructure, tighter regulation, a workforce walking out the door, and systems that don\u2019t talk to each other. Whether you\u2019re replacing water mains or upgrading substations, we help you fix the delivery and operating systems so you can actually keep up.",
     heroStats: [
-      { value: "14,000+", label: "Electrician shortfall by 2030", source: "PSO Workforce Plan" },
-      { value: "$87B", label: "Transmission investment needed by 2050", source: "AEMO ISP" },
-      { value: "20\u201322%", label: "Capital spend increase proposed by networks", source: "IEEFA" },
       { value: "300,000", label: "Infrastructure worker shortfall by 2027", source: "Infrastructure Australia" },
+      { value: "$87B", label: "Energy network investment needed by 2050", source: "AEMO ISP" },
+      { value: "30%+", label: "Water lost to leaks in some networks", source: "Bureau of Meteorology" },
+      { value: "20\u201322%", label: "Capital spend increase proposed by networks", source: "IEEFA" },
     ],
 
     soundFamiliar: [
-      { icon: "users", text: "Your most experienced lineworkers are retiring and there\u2019s nobody with 20 years\u2019 knowledge coming up behind them" },
-      { icon: "clock", text: "Unplanned outages are increasing because your network assets are aging faster than you can replace them" },
-      { icon: "layers", text: "Your SCADA system doesn\u2019t talk to your asset management system, which doesn\u2019t talk to your work management system" },
+      { icon: "users", text: "Your most experienced operators are retiring \u2014 and their knowledge of the network, the pipes, and the workarounds is walking out with them" },
+      { icon: "clock", text: "Water mains are bursting, power assets are failing, and the replacement backlog grows faster than your crews can work through it" },
+      { icon: "layers", text: "Your SCADA, GIS, asset management, and work management systems all live in separate worlds \u2014 and nobody has the full picture" },
       { icon: "alert", text: "Capital works programs keep slipping \u2014 and the regulator wants to know why you\u2019re underspending your allowance" },
-      { icon: "shield", text: "Safety and compliance reporting takes whole teams and still relies on spreadsheets and manual processes" },
-      { icon: "trending-down", text: "Maintenance crews spend more time on paperwork and travel than actually fixing things in the field" },
+      { icon: "shield", text: "Safety and compliance reporting takes whole teams \u2014 from electrical safety to water quality to environmental monitoring" },
+      { icon: "trending-down", text: "Field crews spend more time on paperwork, travel, and chasing information than actually maintaining infrastructure" },
       { icon: "puzzle", text: "You\u2019ve invested in new systems but half the field crews are still running off paper forms and local knowledge" },
-      { icon: "clipboard", text: "Regulatory submissions, safety audits, and environmental reporting consume months of effort every cycle" },
+      { icon: "clipboard", text: "Regulatory submissions across multiple agencies \u2014 AER, state safety, water quality, environmental \u2014 consume months of effort every cycle" },
     ],
     soundFamiliarSub:
       "If you\u2019re running a utility or network operation in Australia right now, you\u2019re probably nodding at most of these.",
@@ -596,50 +596,50 @@ export const industries: Industry[] = [
       },
     ],
 
-    systemProblemTitle: "It\u2019s not the network. It\u2019s how the business runs around it.",
+    systemProblemTitle: "It\u2019s not the pipes or the poles. It\u2019s how the business runs around them.",
     systemProblemBody:
-      "Most utilities have invested in network assets and field technology. But the systems connecting them \u2014 how work flows from fault detection to dispatch to completion to reporting \u2014 are held together with spreadsheets, emails, and tribal knowledge. When your SCADA, asset management, work management, and finance systems don\u2019t talk to each other, you\u2019re making million-dollar capital decisions on incomplete information. The technology to fix this exists. But 70% of digital transformations in utilities fail because nobody changes how the organisation actually works around the new tools. That\u2019s the gap we close.",
+      "Most utilities have invested in network assets and field technology. But the systems connecting them \u2014 how work flows from a burst main or a network fault through to dispatch, completion, and reporting \u2014 are held together with spreadsheets, emails, and tribal knowledge. When your SCADA, GIS, asset management, work management, and finance systems don\u2019t talk to each other, you\u2019re making million-dollar capital decisions on incomplete information. Whether it\u2019s a water network losing 30% to leaks or a power network with a growing maintenance backlog, the technology to fix this exists. But 70% of digital transformations in utilities fail because nobody changes how the organisation actually works around the new tools. That\u2019s the gap we close.",
 
     sections: [
       {
         id: "assets",
         icon: "tool",
         image: "/images/utilities-grid.webp",
-        title: "Get ahead of your aging network before it gets ahead of you",
+        title: "Get ahead of your aging infrastructure before it gets ahead of you",
         intro:
-          "A significant proportion of Australia\u2019s network infrastructure is reaching end of life. Distribution networks are proposing 20\u201322% increases in capital spend just to keep up with replacement and augmentation. But throwing money at assets without the right systems means you\u2019re replacing things too early, too late, or in the wrong order.",
+          "Water mains from the 1960s. Power lines at end of life. Treatment plants running beyond design capacity. Across electricity and water, Australian utilities are proposing 20\u201322% capital spend increases just to keep up with replacement. But throwing money at assets without the right systems means you\u2019re replacing things too early, too late, or in the wrong order.",
         painPoints: [
           {
             icon: "alert",
             hook: "Replacing assets on age, not condition",
-            body: "Without condition monitoring, you\u2019re either replacing assets too early (wasting capital) or too late (after they\u2019ve already failed). Predictive maintenance reduces unplanned failures by 70\u201375% and cuts maintenance costs 25\u201330%.",
+            body: "Without condition monitoring, you\u2019re either replacing pipes and poles too early (wasting capital) or too late (after they\u2019ve already burst or failed). Predictive maintenance reduces unplanned failures by 70\u201375% and cuts maintenance costs 25\u201330%.",
           },
           {
             icon: "eye-off",
             hook: "No single view of asset health",
-            body: "Your asset register lives in one system, maintenance history in another, and condition data in a third. Getting a complete picture means chasing data across platforms and hoping nothing was missed.",
+            body: "Your asset register lives in one system, maintenance history in another, and condition data \u2014 pressure sensors, leak detection, transformer monitoring \u2014 in a third. Getting a complete picture means chasing data across platforms.",
           },
           {
             icon: "trending-down",
             hook: "Reactive maintenance eating your budget",
-            body: "Unplanned work costs 4\u20135x more than planned work. Every emergency callout displaces scheduled maintenance, creating a cycle where you\u2019re always behind and the backlog keeps growing.",
+            body: "Every burst main or emergency callout costs 4\u20135x more than planned work and displaces scheduled maintenance. Some water networks lose over 30% of supply to leaks. The backlog just keeps growing.",
           },
         ],
         outcomes: [
           {
             title: "Asset decisions",
-            before: "You replace assets based on age and gut feel. Some fail before replacement. Others get swapped out with years of life left.",
-            after: "Condition-based data drives every replacement decision. You spend capital where it matters most, extending asset life by 20\u201340% where safe to do so.",
+            before: "You replace pipes and poles based on age and gut feel. Some fail before replacement. Others get swapped out with years of life left.",
+            after: "Condition-based data drives every replacement decision. You spend capital where it matters most \u2014 whether that\u2019s a critical water main or an aging feeder line.",
           },
           {
             title: "Maintenance approach",
-            before: "Your team spends most of its time reacting to failures and emergency callouts. Planned work keeps getting bumped.",
-            after: "Predictive analytics flag problems before they become failures. Maintenance shifts from reactive to planned. Unplanned outages drop, reliability climbs.",
+            before: "Your team spends most of its time reacting to burst mains, equipment failures, and emergency callouts. Planned work keeps getting bumped.",
+            after: "Predictive analytics flag problems before they become failures. Leak detection catches losses early. Maintenance shifts from reactive to planned across the whole network.",
           },
           {
             title: "Asset visibility",
             before: "Getting a complete picture of network health means pulling data from 4+ systems and reconciling it manually. Nobody fully trusts the numbers.",
-            after: "One integrated view of asset condition, maintenance history, and risk. You make capital and maintenance decisions with confidence, not guesswork.",
+            after: "One integrated view \u2014 pipes, valves, transformers, treatment assets \u2014 showing condition, maintenance history, and risk. Capital decisions made with confidence, not guesswork.",
           },
         ],
       },
@@ -649,7 +649,7 @@ export const industries: Industry[] = [
         image: "/images/utilities-field.webp",
         title: "Deliver your capital program without the cost blowouts",
         intro:
-          "With $87 billion in transmission investment ahead and networks proposing significant capital increases, the pressure to deliver on time and on budget has never been higher. Regulators are watching. Customers are paying. And the workforce to deliver it all is in short supply.",
+          "Whether it\u2019s transmission upgrades, water treatment plant expansions, or pipe renewal programs \u2014 the pressure to deliver on time and on budget has never been higher. Regulators are watching. Customers are paying. Material costs have jumped 30%+ since contracts were signed. And the workforce to deliver it all is in short supply.",
         painPoints: [
           {
             icon: "clock",
@@ -691,22 +691,22 @@ export const industries: Industry[] = [
         image: "/images/utilities-workers.webp",
         title: "Do more with the people you\u2019ve got \u2014 because you can\u2019t find more",
         intro:
-          "Australia faces a shortfall of 14,000 electricians by 2030 and 300,000 infrastructure workers by 2027. You\u2019re not going to hire your way out of this. The utilities that win will be the ones that get more from every field crew, every planner, and every hour on the network.",
+          "Australia faces a shortfall of 300,000 infrastructure workers by 2027. Electricians, water treatment operators, network technicians, plumbers \u2014 every trade is stretched. You\u2019re not going to hire your way out of this. The utilities that win will be the ones that get more from every field crew, every planner, and every hour on the network.",
         painPoints: [
           {
             icon: "door-open",
             hook: "Decades of knowledge walking out the door",
-            body: "Your most experienced operators and lineworkers are retiring. Their knowledge of the network \u2014 the quirks, the workarounds, the history \u2014 lives in their heads, not in any system.",
+            body: "Your most experienced operators \u2014 the ones who know every valve, every feeder, every quirk in the network \u2014 are retiring. Their knowledge lives in their heads, not in any system.",
           },
           {
             icon: "clock",
             hook: "Field crews drowning in admin",
-            body: "Crews spend hours on safety paperwork, job close-outs, and compliance forms. That\u2019s wrench time you\u2019re not getting back. Digital field solutions reclaim 1\u20132 hours per crew per day.",
+            body: "Crews spend hours on safety paperwork, water quality sampling forms, job close-outs, and compliance logs. That\u2019s wrench time you\u2019re not getting back. Digital field solutions reclaim 1\u20132 hours per crew per day.",
           },
           {
             icon: "users",
-            hook: "Apprentice pipeline can\u2019t keep up",
-            body: "Australia needs 20,500 apprentice electricians commencing annually \u2014 40% higher than recent averages. There\u2019s even a shortage of trainers to train them.",
+            hook: "The trade pipeline can\u2019t keep up",
+            body: "Australia needs 20,500 apprentice electricians commencing annually \u2014 40% higher than recent averages. Water and wastewater operators face similar shortages. There\u2019s even a shortage of trainers to train them.",
           },
         ],
         outcomes: [
@@ -733,12 +733,12 @@ export const industries: Industry[] = [
         image: "/images/utilities-control.webp",
         title: "Make your systems actually work together",
         intro:
-          "The average utility runs dozens of disconnected platforms \u2014 SCADA, GIS, asset management, work management, outage management, finance, safety. Each one works on its own. Together, they\u2019re a mess. And the gap between what technology can do and what most mid-tier utilities actually use is enormous.",
+          "The average utility runs dozens of disconnected platforms \u2014 SCADA, telemetry, GIS, asset management, work management, water quality monitoring, outage management, finance. Each one works on its own. Together, they\u2019re a mess. And the gap between what technology can do and what most mid-tier utilities actually use is enormous.",
         painPoints: [
           {
             icon: "layers",
             hook: "Data in silos, decisions in the dark",
-            body: "Your SCADA system knows network state. Your GIS knows asset location. Your work management knows job status. But nobody has the full picture without hours of manual reconciliation.",
+            body: "Your SCADA knows network state. Your GIS knows asset location. Your telemetry knows pressure and flow. Your work management knows job status. But nobody has the full picture without hours of manual reconciliation.",
           },
           {
             icon: "x-circle",
@@ -748,14 +748,14 @@ export const industries: Industry[] = [
           {
             icon: "compass",
             hook: "OT/IT convergence is a minefield",
-            body: "Connecting operational technology to IT systems is essential for smart grid and advanced analytics. But security concerns, legacy protocols, and organisational silos make it one of the hardest problems in the sector.",
+            body: "Connecting operational technology to IT systems \u2014 whether it\u2019s smart grid analytics or real-time water quality monitoring \u2014 is essential. But security concerns, legacy protocols, and organisational silos make it one of the hardest problems in the sector.",
           },
         ],
         outcomes: [
           {
             title: "Connected systems",
             before: "Getting a complete operational picture means pulling data from 5+ systems and reconciling formats. By the time you have the answer, the situation has changed.",
-            after: "Integrated data architecture where SCADA, GIS, asset management, and work management speak the same language. One source of truth for operations and planning.",
+            after: "Integrated data architecture where SCADA, telemetry, GIS, asset management, and work management speak the same language. One source of truth for operations and planning.",
           },
           {
             title: "Digital adoption",
@@ -774,15 +774,15 @@ export const industries: Industry[] = [
     proofPoints: [
       { value: "70\u201375%", label: "Reduction in unplanned asset failures with predictive maintenance", source: "DOE / Deloitte" },
       { value: "25\u201330%", label: "Lower maintenance costs with condition-based approach", source: "McKinsey" },
-      { value: "10:1", label: "Average ROI from predictive maintenance programs", source: "U.S. DOE" },
+      { value: "30%+", label: "Non-revenue water reduced with smart leak detection and pressure management", source: "Bureau of Meteorology" },
       { value: "20\u201340%", label: "Asset life extension with condition monitoring", source: "Industry benchmark" },
-      { value: "52.7%", label: "Less downtime with proactive vs reactive maintenance", source: "Industry research" },
+      { value: "10:1", label: "Average ROI from predictive maintenance programs", source: "U.S. DOE" },
       { value: "70%", label: "Of utility digital transformations fail without proper implementation", source: "Industry benchmark" },
     ],
 
-    ctaHeadline: "Let\u2019s talk about what\u2019s actually slowing your network down",
+    ctaHeadline: "Let\u2019s talk about what\u2019s actually slowing your operation down",
     ctaBody:
-      "No consultancy theatre. No death-by-PowerPoint. We\u2019ll spend time with your operation \u2014 in the control room, with your field crews, in your planning sessions. You\u2019ll get a clear, honest picture of where your systems are costing you reliability, money, and time, and a practical plan to fix it. 30 minutes. No pitch. Just a straight conversation.",
+      "No consultancy theatre. No death-by-PowerPoint. We\u2019ll spend time with your operation \u2014 in the control room, at the treatment plant, with your field crews. You\u2019ll get a clear, honest picture of where your systems are costing you reliability, money, and time, and a practical plan to fix it. 30 minutes. No pitch. Just a straight conversation.",
     ctaButtonLabel: "Book a Conversation",
   },
 ];
