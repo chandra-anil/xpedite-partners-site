@@ -58,6 +58,11 @@ export default function Footer() {
                     Construction Industry
                   </Link>
                 </li>
+                <li>
+                  <Link href="/industries/mining" className="text-white/60 hover:text-[#E8632B] transition-colors text-sm">
+                    Mining Industry
+                  </Link>
+                </li>
               </ul>
             </div>
 
