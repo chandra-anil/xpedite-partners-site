@@ -16,6 +16,8 @@ const industryLinks = [
   { label: "Construction", href: "/industries/construction" },
   { label: "Mining", href: "/industries/mining" },
   { label: "Utilities", href: "/industries/utilities" },
+  { label: "Commercial Buildings", href: "/industries/commercial-buildings" },
+  { label: "Manufacturing", href: "/industries/manufacturing" },
 ];
 
 export default function Header() {
