@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import WhatWeDo from "@/components/WhatWeDo";
 import WhoWeServe from "@/components/WhoWeServe";
+import EnterpriseForEveryone from "@/components/EnterpriseForEveryone";
 import DeliveryPhilosophy from "@/components/DeliveryPhilosophy";
 import NetworkModel from "@/components/NetworkModel";
 import WhyUs from "@/components/WhyUs";
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <WhatWeDo />
         <WhoWeServe />
+        <EnterpriseForEveryone />
         <DeliveryPhilosophy />
         <NetworkModel />
         <WhyUs />

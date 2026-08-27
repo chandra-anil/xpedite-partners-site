@@ -162,29 +162,6 @@ function Icon({ name, className = "" }: { name: string; className?: string }) {
 }
 
 export default function IndustryContent({ industry }: { industry: Industry }) {
-  const processSteps = [
-    {
-      icon: "search",
-      title: "We learn your business",
-      body: "We spend time on your sites, in your office, with your people. We look at how jobs flow from quote to completion \u2014 where time gets wasted, where money leaks, where things fall between the cracks.",
-    },
-    {
-      icon: "bar-chart",
-      title: "We show you the picture",
-      body: "You get a clear, plain-English view of where your business is strong and where it\u2019s costing you. No jargon, no 200-page report. Just an honest assessment with real numbers.",
-    },
-    {
-      icon: "tool",
-      title: "We build the fix \u2014 with you",
-      body: "We set up the right tools and processes for your size and type of work. We make sure your team actually uses them. We stay until the new way of working sticks \u2014 not just until the software is installed.",
-    },
-    {
-      icon: "check-circle",
-      title: "You run it from here",
-      body: "The goal is a business that runs properly without us. Better visibility, tighter margins, less firefighting. You manage by looking at a dashboard, not by being on every site.",
-    },
-  ];
-
   return (
     <div className="bg-[#1a1a1a] text-white">
       {/* ── Hero ── */}
@@ -262,9 +239,7 @@ export default function IndustryContent({ industry }: { industry: Industry }) {
               Sound familiar?
             </h2>
             <p className="text-white/50 text-center mb-10 max-w-xl mx-auto">
-              If you&apos;re running a construction business in South-East
-              Queensland right now, you&apos;re probably nodding at most of
-              these.
+              {industry.soundFamiliarSub}
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               {industry.soundFamiliar.map((item, i) => (
@@ -450,8 +425,7 @@ export default function IndustryContent({ industry }: { industry: Industry }) {
               The numbers don&apos;t lie
             </h2>
             <p className="text-white/50 text-center mb-10 max-w-xl mx-auto">
-              These aren&apos;t projections. They&apos;re documented results
-              from builders who&apos;ve made the shift.
+              {industry.proofPointsSub}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {industry.proofPoints.map((stat, i) => (
@@ -498,7 +472,7 @@ export default function IndustryContent({ industry }: { industry: Industry }) {
               you to change how your business runs.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
-              {processSteps.map((item, i) => (
+              {industry.processSteps.map((item, i) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 20 }}
