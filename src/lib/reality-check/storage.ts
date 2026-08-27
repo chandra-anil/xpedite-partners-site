@@ -23,6 +23,7 @@
  */
 
 import { createHash, randomBytes } from "node:crypto";
+import { neon } from "@neondatabase/serverless";
 import type { ArchetypeId } from "./scoring";
 
 /* ------------------------------------------------------------------ */
@@ -175,7 +176,7 @@ function mean(values: number[]): number {
 /* Neon (Postgres) store                                               */
 /* ------------------------------------------------------------------ */
 
-type SqlClient = ReturnType<typeof import("@neondatabase/serverless").neon>;
+type SqlClient = ReturnType<typeof neon>;
 
 class NeonStorage implements Storage {
   private ready: Promise<void> | null = null;
@@ -347,9 +348,11 @@ export function getStorage(): Storage {
 
   const url = process.env.DATABASE_URL ?? process.env.POSTGRES_URL;
   if (url) {
-    // Imported lazily so a deployment with no database never loads the driver.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { neon } = require("@neondatabase/serverless") as typeof import("@neondatabase/serverless");
+    // Statically imported at the top of this file rather than require()d here.
+    // The driver is a thin HTTP client, so loading it unconditionally costs
+    // almost nothing — and a CommonJS require() inside an ES module is exactly
+    // the kind of thing that works in dev and then fails in a serverless build,
+    // which would take storage down at the only moment it matters.
     cached = new NeonStorage(neon(url));
   } else {
     cached = new MemoryStorage();
