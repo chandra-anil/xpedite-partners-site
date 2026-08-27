@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import IndustryContent from "@/components/IndustryContent";
+import AiReadyPromo from "@/components/AiReadyPromo";
 import { industries, getIndustryBySlug } from "@/data/industries";
 
 interface PageProps {
@@ -42,6 +43,7 @@ export default async function IndustryPage({ params }: PageProps) {
       <Header />
       <main>
         <IndustryContent industry={industry} />
+        <AiReadyPromo />
       </main>
       <Footer />
     </>

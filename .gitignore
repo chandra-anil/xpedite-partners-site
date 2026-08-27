@@ -44,3 +44,6 @@ public/images/hero-bg.mov
 next-env.d.ts
 
 .vercel
+
+# Working folder of raw source images. Only public/images is served by Next.
+/images

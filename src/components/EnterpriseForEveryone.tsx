@@ -114,7 +114,7 @@ export default function EnterpriseForEveryone() {
           viewport={{ once: true }}
           variants={fadeIn}
         >
-          <p className="text-center text-white/40 text-sm uppercase tracking-widest mb-6">
+          <p className="text-center text-white/60 text-sm uppercase tracking-widest mb-6">
             See what we do in your industry
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -136,6 +136,27 @@ export default function EnterpriseForEveryone() {
               </motion.div>
             ))}
           </div>
+        </motion.div>
+
+        {/* Route to the AI Ready offer. #C5521F, not #E8632B: white text on
+            #E8632B is ~3.4:1 and fails WCAG AA. */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="mt-16 pt-10 border-t border-white/10 text-center"
+        >
+          <p className="text-white/70 text-sm mb-5 max-w-xl mx-auto">
+            Running a business of 20 to 200 people and wondering where AI fits?
+          </p>
+          <Link
+            href="/ai-ready"
+            className="inline-flex items-center gap-2 px-7 py-3.5 min-h-[48px] rounded-lg bg-[#C5521F] text-white font-semibold hover:bg-[#A8441A] transition-colors"
+          >
+            See Xpedite AI Ready
+            <span aria-hidden="true">&#8594;</span>
+          </Link>
         </motion.div>
       </div>
     </section>

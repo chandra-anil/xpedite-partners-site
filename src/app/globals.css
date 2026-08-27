@@ -19,6 +19,20 @@
   scroll-behavior: smooth;
 }
 
+/* Smooth scrolling is motion. Honour the OS setting. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+  }
+}
+
+/* Visible keyboard focus, site-wide. :where() keeps specificity at 0 so any
+   component can override it without a fight. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid #E8632B;
+  outline-offset: 3px;
+}
+
 body {
   background: #ffffff;
   color: #171717;
@@ -87,4 +101,94 @@ body {
 
 .animate-ken-burns {
   animation: kenBurns 20s ease-in-out infinite alternate;
+}
+
+/* ==================================================================
+   Xpedite AI Ready (/ai-ready)
+   ------------------------------------------------------------------
+   Motion policy for this route. Two rules govern everything here:
+
+   1. The base state of every element is VISIBLE. Nothing carries
+      opacity:0 by default, so the page is fully readable with JS
+      disabled, in find-in-page, and in reader mode. (The rest of the
+      site uses framer-motion `initial={{opacity:0}}`, which renders an
+      inline opacity:0 and hides content when JS is off.)
+   2. All motion sits inside `prefers-reduced-motion: no-preference`.
+   ================================================================== */
+
+/* --- One orchestrated moment: the hero, on load. CSS only, no JS. --- */
+@keyframes xrHeroIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .xr-hero > * {
+    animation: xrHeroIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .xr-hero > *:nth-child(1) { animation-delay: 0.00s; }
+  .xr-hero > *:nth-child(2) { animation-delay: 0.09s; }
+  .xr-hero > *:nth-child(3) { animation-delay: 0.18s; }
+  .xr-hero > *:nth-child(4) { animation-delay: 0.27s; }
+  .xr-hero > *:nth-child(5) { animation-delay: 0.36s; }
+}
+
+/* There is deliberately no scroll reveal on this page. A CSS scroll-driven
+   version was built and cut: it only ran in Chromium, and on sections taller
+   than the viewport the range never resolved, leaving copy sitting at partial
+   opacity. The hero stagger is the one orchestrated moment; everything below
+   it is static in every browser. */
+
+/* --- Sticky mobile booking bar --- */
+@keyframes xrBarIn {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.xr-bar {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .xr-bar {
+    animation: xrBarIn 0.2s ease-out both;
+  }
+}
+
+/* --- The mono utility face, used for margin labels and step markers.
+       Falls back cleanly if the variable is ever unset. --- */
+.xr-label {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* --- Type scale. Fluid, tight, set once so the page can't drift. --- */
+.xr-h1 {
+  font-size: clamp(1.6875rem, 6.6vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+.xr-turn {
+  font-size: clamp(1.375rem, 4.2vw, 2.5rem);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+.xr-h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.xr-h3-sector {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Every section on this route is an anchor target. Clear the fixed z-50
+   header so a focused or linked target is never obscured (WCAG 2.4.11). */
+.xr-page [id] {
+  scroll-margin-top: 5.5rem;
 }

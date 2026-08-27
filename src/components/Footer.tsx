@@ -29,6 +29,11 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2">
                 <li>
+                  <Link href="/ai-ready" className="text-white/60 hover:text-[#E8632B] transition-colors text-sm">
+                    Xpedite AI Ready
+                  </Link>
+                </li>
+                <li>
                   <Link href="/frameworks" className="text-white/60 hover:text-[#E8632B] transition-colors text-sm">
                     Delivery Frameworks
                   </Link>
@@ -45,7 +50,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="/frameworks/ai-readiness" className="text-white/60 hover:text-[#E8632B] transition-colors text-sm">
-                    AI Readiness Assessment
+                    AI Integration Readiness
                   </Link>
                 </li>
                 <li>
@@ -96,7 +101,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-white/10 text-white/40 text-sm">
+          <div className="mt-8 pt-6 border-t border-white/10 text-white/60 text-sm">
             &copy; 2026 Xpedite Partners Pty Ltd. All rights reserved.
           </div>
         </div>
