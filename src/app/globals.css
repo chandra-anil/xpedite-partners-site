@@ -192,3 +192,203 @@ body {
 .xr-page [id] {
   scroll-margin-top: 5.5rem;
 }
+
+/* ==================================================================
+   AI Reality Check (/ai-ready/reality-check)
+   ------------------------------------------------------------------
+   The landing page is Xpedite's proposal — dark ground, the firm
+   talking. This is the reader's own working paper being filled in, so
+   the working surface flips to paper and sits on that same dark ground.
+   Same family, no new hue: #0F0F0F stops being the ground and becomes
+   the ink.
+
+   It proves the point by looking like the documents this audience
+   already trusts — prequal packs, inspection sheets, drawings with a
+   title block — rather than by looking like a quiz.
+   ================================================================== */
+
+.rc-root {
+  --rc-sheet: #FCFAF7;       /* white pulled ~3% toward the brand beige */
+  --rc-ink: #0F0F0F;
+  --rc-ink-60: rgba(15, 15, 15, 0.6);
+  --rc-rule: rgba(15, 15, 15, 0.16);
+  --rc-rule-strong: rgba(15, 15, 15, 0.5);
+  --rc-mark: #E8632B;        /* marks only — never text on the sheet (~3.0:1) */
+  --rc-accent-lg: #C5521F;   /* large accent type, >=18px semibold */
+  --rc-accent-sm: #A8441A;   /* small accent text and links */
+  --rc-band: #FDEBD5;        /* fills exactly one thing: the band you landed in */
+}
+
+/* --- The sheet ---------------------------------------------------- */
+.rc-sheet {
+  background: var(--rc-sheet);
+  color: var(--rc-ink);
+}
+
+/* --- Type. The mono face carries more here than anywhere else on the
+       site: it is the voice of the document (field labels, question
+       IDs, scores) as distinct from the voice of a person (the sans). */
+.rc-label {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.rc-numeral {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.rc-archetype {
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.rc-question {
+  font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.rc-h2 {
+  font-size: clamp(1.25rem, 2.6vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* --- The band scale. Engineering-drawing vernacular: four labelled
+       segments, your band filled, your position a solid caret above the
+       rule. Works at 350px, on A4, and in black and white — position
+       plus a filled segment, never colour alone. --- */
+.rc-scale {
+  position: relative;
+  display: flex;
+  height: 14px;
+  border: 1px solid var(--rc-rule-strong);
+}
+
+.rc-scale-seg {
+  flex: 1;
+  border-right: 1px solid var(--rc-rule-strong);
+}
+
+.rc-scale-seg:last-child {
+  border-right: none;
+}
+
+.rc-scale-seg[data-you="true"] {
+  background: var(--rc-band);
+}
+
+.rc-caret {
+  position: absolute;
+  top: -9px;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--rc-mark);
+}
+
+/* The one orchestrated moment: the carets draw to position after the
+   page has already rendered. The scores are deterministic and render
+   instantly — there is no spinner anywhere on this route, because a
+   spinner implies the machine is deciding, and the whole argument is
+   that it isn't. */
+@media (prefers-reduced-motion: no-preference) {
+  .rc-caret {
+    animation: rcCaretIn 0.2s ease-out both;
+  }
+  .rc-scale[data-index="0"] .rc-caret { animation-delay: 0.05s; }
+  .rc-scale[data-index="1"] .rc-caret { animation-delay: 0.20s; }
+  .rc-scale[data-index="2"] .rc-caret { animation-delay: 0.35s; }
+}
+
+@keyframes rcCaretIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* --- Answer rows. Ruled rows with a square box, not pills: the page is
+       a form someone senior built, not a card-swiping quiz. --- */
+.rc-option {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  min-height: 56px;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rc-rule);
+  text-align: left;
+  transition: background-color 0.12s ease-out;
+}
+
+.rc-option:last-child {
+  border-bottom: 1px solid var(--rc-rule);
+}
+
+.rc-option:hover {
+  background: rgba(15, 15, 15, 0.03);
+}
+
+.rc-box {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1px solid var(--rc-rule-strong);
+  position: relative;
+}
+
+/* The mark a pen makes on an inspection sheet. Legible where a colour
+   change alone is not. */
+.rc-box[data-checked="true"]::before,
+.rc-box[data-checked="true"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: var(--rc-mark);
+}
+
+.rc-box[data-checked="true"]::before { transform: translate(-50%, -50%) rotate(45deg); }
+.rc-box[data-checked="true"]::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+
+/* --- Print. The PDF is not a separate artefact: it is this page,
+       printed. That is the point — nothing was held back for the email. --- */
+@media print {
+  .rc-no-print { display: none !important; }
+
+  .rc-root,
+  .rc-sheet {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .rc-sheet {
+    box-shadow: none !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .rc-print-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .rc-caret { animation: none !important; }
+
+  a[href]::after { content: ""; }
+
+  @page {
+    size: A4 portrait;
+    margin: 14mm;
+  }
+}
