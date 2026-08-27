@@ -156,9 +156,13 @@ body {
 }
 
 /* --- The mono utility face, used for margin labels and step markers.
-       Falls back cleanly if the variable is ever unset. --- */
+       The fallback lives INSIDE var() on purpose. Written as
+       `var(--font-geist-mono), ui-monospace, …` the whole declaration becomes
+       invalid the moment the variable is unset — CSS drops it entirely and the
+       element silently inherits the body's sans, which is the opposite of a
+       clean fallback. This form survives the font failing to load. --- */
 .xr-label {
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-geist-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.6875rem;
   line-height: 1.4;
   letter-spacing: 0.18em;
@@ -228,8 +232,11 @@ body {
 /* --- Type. The mono face carries more here than anywhere else on the
        site: it is the voice of the document (field labels, question
        IDs, scores) as distinct from the voice of a person (the sans). */
+/* Fallback inside var() — see the note on .xr-label above. Without it, a font
+   that fails to load takes the whole declaration with it and these labels
+   quietly render in the body sans instead of any monospace at all. */
 .rc-label {
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-geist-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.6875rem;
   line-height: 1.4;
   letter-spacing: 0.18em;
@@ -237,7 +244,7 @@ body {
 }
 
 .rc-numeral {
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-geist-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-variant-numeric: tabular-nums;
 }
 
