@@ -89,7 +89,7 @@ export default function RealityCheck({ bookingUrl }: { bookingUrl: string }) {
           setErrorMessage(
             data?.error === "rate_limited"
               ? "This has been completed several times from your connection in the last hour. Try again later."
-              : "Something went wrong scoring that. Your answers are still here — try again."
+              : "Something went wrong scoring that. Your answers are still here. Try again."
           );
           return;
         }
@@ -103,7 +103,7 @@ export default function RealityCheck({ bookingUrl }: { bookingUrl: string }) {
       } catch {
         setPhase("error");
         setErrorMessage(
-          "Couldn't reach the server. Your answers are still here — try again."
+          "Could not reach the server. Your answers are still here. Try again."
         );
       }
     },
@@ -167,10 +167,38 @@ export default function RealityCheck({ bookingUrl }: { bookingUrl: string }) {
           <h1 className="xr-h1 mt-3 font-bold text-white">
             Find out where your business actually stands.
           </h1>
+          {/* The second sentence used to preview the payload, which the list
+              below then repeated in more words. The reader was reading the
+              same promise twice. */}
           <p className="mt-5 max-w-xl text-lg leading-[1.6] text-white/70">
-            A structured read on how ready your business is for AI — the rules around it,
-            how work actually runs, and your people. You&rsquo;ll get a scored result and
-            the three decisions it points to.
+            Answer {COUNTS.total} short questions about how your business uses AI today.
+          </p>
+
+          {/* What they get. Previously a mock-up of the results sheet, which
+              read as an empty form the reader had to fill in. A plain list is
+              slower to look at and far faster to understand. */}
+          <p className="rc-label mt-8" style={{ color: "#E8632B" }}>
+            What you get
+          </p>
+          <ul className="mt-4 flex flex-col gap-3">
+            {[
+              "A score for each of the three areas: your people, how work runs, and the rules around it.",
+              "What that means for a business like yours, in your own sector.",
+              "Three decisions to make next, most of which cost nothing.",
+            ].map((item) => (
+              <li key={item} className="flex gap-3 text-white/80">
+                <span aria-hidden="true" style={{ color: "#E8632B" }}>
+                  &#8594;
+                </span>
+                <span className="leading-[1.6]">{item}</span>
+              </li>
+            ))}
+          </ul>
+          {/* The mock-up this list replaced did one thing a list cannot: it
+              showed the form of the thing. This recovers some of that without
+              putting an empty form back on the page. */}
+          <p className="mt-4 text-[0.9375rem] text-white/60">
+            It comes out as a findings sheet you can read on your phone or print.
           </p>
 
           {/* The honesty framing, set like a scope clause rather than a sales bullet. */}
@@ -178,49 +206,9 @@ export default function RealityCheck({ bookingUrl }: { bookingUrl: string }) {
             className="rc-label mt-8 flex flex-col gap-2 border-l-2 pl-4 text-white/70"
             style={{ borderColor: "#E8632B" }}
           >
-            <li>{COUNTS.scored} scored questions · {COUNTS.context} quick details · 1 final question</li>
-            <li>Under 5 minutes · every answer is one tap · no typing</li>
-            <li>Your full result on screen — no email required</li>
+            <li>Under 5 minutes. Every answer is one tap, and there is no typing.</li>
+            <li>Your full result appears on screen. No email address needed.</li>
           </ul>
-
-          {/* Show the deliverable before asking for anything. */}
-          <div className="mt-9 rc-sheet rc-root px-5 py-5" aria-hidden="true">
-            <p className="rc-label" style={{ color: "var(--rc-ink-60)" }}>
-              What you leave with
-            </p>
-            <div
-              className="mt-3 grid grid-cols-2 border"
-              style={{ borderColor: "var(--rc-rule-strong)", borderTopWidth: 3, borderTopColor: "var(--rc-mark)" }}
-            >
-              {["Sector", "Size", "Role", "Region"].map((k, i) => (
-                <div
-                  key={k}
-                  className="px-3 py-2"
-                  style={{
-                    borderRight: i % 2 === 0 ? "1px solid var(--rc-rule)" : undefined,
-                    borderBottom: i < 2 ? "1px solid var(--rc-rule)" : undefined,
-                  }}
-                >
-                  <span className="rc-label" style={{ color: "var(--rc-ink-60)" }}>
-                    {k}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 flex flex-col gap-3">
-              {["Rules and risk", "How work actually runs", "Your people"].map((n) => (
-                <div key={n}>
-                  <span className="rc-label" style={{ color: "var(--rc-ink-60)" }}>
-                    {n}
-                  </span>
-                  <div
-                    className="mt-1 h-2.5 border"
-                    style={{ borderColor: "var(--rc-rule-strong)" }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
 
           <button
             type="button"
@@ -320,7 +308,7 @@ export default function RealityCheck({ bookingUrl }: { bookingUrl: string }) {
         <div className="flex items-baseline justify-between gap-4">
           <p className="rc-label" style={{ color: "var(--rc-ink-60)" }}>
             {isScored && dimension
-              ? `Part ${dimension.part} of 3 — ${dimension.publicName}`
+              ? `Part ${dimension.part} of 3: ${dimension.publicName}`
               : step.kind === "context"
                 ? "About your business"
                 : "Last one"}
@@ -332,7 +320,16 @@ export default function RealityCheck({ bookingUrl }: { bookingUrl: string }) {
 
         <div className="mt-3 flex gap-1.5" aria-hidden="true">
           {[1, 2, 3].map((p) => {
-            const done = dimension ? dimension.part > p : step.kind === "closer";
+            // The context block sits between Part 1 and Part 2 with no
+            // dimension of its own. Without the `p === 1` case, all three
+            // segments went grey for those five questions, so the reader
+            // completed Part 1, saw it marked, then watched it apparently
+            // reset. A progress bar that looks like it goes backwards is a
+            // reliable way to lose people, and it happened at exactly the
+            // point where the questions stop being about them.
+            const done = dimension
+              ? dimension.part > p
+              : step.kind === "closer" || p === 1;
             const active = dimension?.part === p;
             return (
               <div

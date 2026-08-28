@@ -29,7 +29,7 @@ import { join } from "node:path";
 export const SIZE = { width: 1200, height: 630 };
 export const CONTENT_TYPE = "image/png";
 export const ALT =
-  "Xpedite AI Ready — your biggest customers are starting to ask about AI, data and security.";
+  "Xpedite AI Ready. Your biggest customers are starting to ask about AI, data and security.";
 
 const FONT_DIR = join(process.cwd(), "src", "assets", "fonts");
 

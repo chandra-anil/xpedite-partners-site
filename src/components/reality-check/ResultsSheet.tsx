@@ -49,7 +49,7 @@ export default function ResultsSheet({
     <div className="rc-sheet mx-auto w-full max-w-2xl px-5 py-10 sm:px-10 sm:py-14">
       {/* --- Title block ------------------------------------------- */}
       <p className="rc-label mb-3" style={{ color: "var(--rc-ink-60)" }}>
-        AI Reality Check — findings
+        AI Reality Check findings
       </p>
       <dl
         className="rc-print-block grid grid-cols-2 border"
@@ -125,7 +125,7 @@ export default function ResultsSheet({
                 className="mt-2 text-[0.875rem] leading-[1.6]"
                 style={{ color: "var(--rc-ink-60)" }}
               >
-                For a business like yours, this usually shows up as {d.sectorLine}
+                {view.sectorLinePrefix} {d.sectorLine}
               </p>
             )}
           </div>
@@ -291,18 +291,14 @@ export default function ResultsSheet({
           </ul>
         )}
 
-        {/* The scale is drawn and left unmarked. An instrument that visibly
-            declines to report on an insufficient sample is demonstrating the
-            discipline the firm sells — it is not an apology. */}
-        <div
-          className="h-3.5 border"
-          style={{ borderColor: "var(--rc-rule-strong)" }}
-          role="img"
-          aria-label="Queensland percentile: not yet reported."
-        />
-        <p className="rc-label mt-2.5" style={{ color: "var(--rc-ink-60)" }}>
-          {QLD_BENCHMARK.lockedLine}
-        </p>
+        {/* An earlier version drew an empty scale here to show the comparison
+            withheld. It read as missing data rather than as care, so it is
+            gone. The copy now says what is being built and when it arrives. */}
+        {/* Set as body text, not in the uppercase letterspaced label style.
+            That style is the only marketing-badge typography on a page
+            otherwise set as a findings sheet, and it undid the work the copy
+            was doing. */}
+        <p className="font-semibold">{QLD_BENCHMARK.lockedLine}</p>
         <p className="mt-3 text-[0.9375rem] leading-[1.6]" style={{ color: "var(--rc-ink-60)" }}>
           {QLD_BENCHMARK.lockedExplainer}
         </p>
@@ -336,7 +332,12 @@ export default function ResultsSheet({
               {view.cta.button}
             </a>
             <p className="mt-2.5 text-[0.875rem]" style={{ color: "var(--rc-ink-60)" }}>
-              {view.cta.subline}
+              {/* Where the "you may not need us" band is already on the page,
+                  drop the promise to say so on the call. Saying it twice reads
+                  as walking the band back. */}
+              {view.mayNotNeedUs && view.cta.sublineWhenAlreadySaid
+                ? view.cta.sublineWhenAlreadySaid
+                : view.cta.subline}
             </p>
           </div>
         )}
@@ -354,35 +355,24 @@ export default function ResultsSheet({
         <EmailExchange token={token} persistent={persistent} />
       </div>
 
-      {/* --- Disclosure --------------------------------------------- */}
-      <div
-        className="mt-10 border-t pt-5 text-[0.8125rem] leading-[1.6]"
+      {/* A single quiet privacy link. The longer "how this was built" note that
+          used to sit here has been removed: the results page is for the
+          reader's own findings, and explaining our method in the middle of
+          them was the firm talking about itself at the wrong moment. The
+          method is still published, and is linked before the first question
+          where a sceptic can inspect it before starting. */}
+      <p
+        className="rc-no-print mt-10 border-t pt-5 text-[0.8125rem]"
         style={{ borderColor: "var(--rc-rule)", color: "var(--rc-ink-60)" }}
       >
-        <p>
-          <strong style={{ color: "var(--rc-ink)" }}>How this was built:</strong> scored by
-          rules Anil wrote, computed on our server. Every word above was written by a person
-          before you started — no AI generated any part of your result. The full method is
-          published, question by question.
-        </p>
-        <p className="rc-no-print mt-3">
-          <a
-            href="/ai-ready/reality-check/methodology"
-            className="underline underline-offset-2"
-            style={{ color: "var(--rc-accent-sm)" }}
-          >
-            Read the method
-          </a>
-          {" · "}
-          <a
-            href="/ai-ready/reality-check/privacy"
-            className="underline underline-offset-2"
-            style={{ color: "var(--rc-accent-sm)" }}
-          >
-            Privacy
-          </a>
-        </p>
-      </div>
+        <a
+          href="/ai-ready/reality-check/privacy"
+          className="underline underline-offset-2"
+          style={{ color: "var(--rc-accent-sm)" }}
+        >
+          What we do with your answers
+        </a>
+      </p>
     </div>
   );
 }

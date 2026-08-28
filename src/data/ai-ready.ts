@@ -125,7 +125,7 @@ const CONTACT_EMAIL = "info@xpeditepartners.com.au";
 export const aiReady: AiReadyConfig = {
   // ⚠️ SWAP THIS ONE. See the note on the type above.
   bookingUrl: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-    "Book a 20-minute call — Xpedite AI Ready"
+    "Book a 20-minute call with Xpedite AI Ready"
   )}&body=${encodeURIComponent(
     "Hi Anil,\n\nI'd like to book a 20-minute call about AI in my business.\n\nBusiness name:\nWhat we do:\nRoughly how many staff:\nBest times to call:\n\nThanks,"
   )}`,
@@ -165,7 +165,7 @@ export const aiReady: AiReadyConfig = {
     "A few tools bought, a few subscriptions running, nothing you can point to as a result.",
     "Staff using AI in ways nobody has agreed to, sometimes with client information.",
     "A major customer or government client has started asking AI, data and security questions in tenders and prequalification.",
-    "A pilot that looked promising, then quietly stopped — usually because nobody owned it, not because the tool was wrong.",
+    "A pilot that looked promising, then quietly stopped, usually because nobody owned it rather than because the tool was wrong.",
     "Competitors turning around quotes and tenders faster than you can.",
     "Nobody owns AI in the business, so progress depends on whoever is interested this month.",
   ],

@@ -5,9 +5,9 @@ import RealityCheck from "@/components/reality-check/RealityCheck";
 import { aiReady } from "@/data/ai-ready";
 import { COUNTS } from "@/data/reality-check/questions";
 
-const TITLE = "AI Reality Check — free AI readiness scorecard | Xpedite AI Ready";
+const TITLE = "AI Reality Check: free AI readiness scorecard | Xpedite AI Ready";
 const DESCRIPTION =
-  "A free, structured read on how ready your business is for AI: the rules around it, how work runs, and your people. Under 5 minutes, no typing, full result on screen without giving an email address.";
+  "Free. Answer 22 short questions and find out where your business stands on AI: your people, how work runs, and the rules around it. Under 5 minutes, no typing, and your full result shows on screen without giving an email address.";
 const URL = "https://xpeditepartners.com.au/ai-ready/reality-check";
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default function RealityCheckPage() {
               <h1 className="xr-h2 font-bold">AI Reality Check</h1>
               <p className="mt-4 text-white/70">
                 {COUNTS.scored} scored questions, {COUNTS.context} quick details and one final
-                question — under 5 minutes, and your full result shows on screen without an
+                question. Under 5 minutes, and your full result shows on screen without an
                 email address. It needs JavaScript switched on to run.
               </p>
             </div>

@@ -20,7 +20,7 @@ import { INSTRUMENT_VERSION } from "@/data/reality-check/questions";
  *      decision. They are defensible but they are a business call.
  */
 
-const TITLE = "Privacy — AI Reality Check | Xpedite AI Ready";
+const TITLE = "Privacy | AI Reality Check | Xpedite AI Ready";
 const DESCRIPTION =
   "What the AI Reality Check collects, why, where it is stored, how long it is kept, and how to have it deleted.";
 
@@ -58,8 +58,8 @@ const COLLECTED: [string, string][] = [
   ],
   ["How long you took", "To spot junk submissions and keep the dataset clean"],
   [
-    "Your email address — only if you choose to give it",
-    "To send your PDF, to tell you when Queensland comparisons become available, and to send the monthly briefing if you tick that box",
+    "Your email address, only if you choose to give it",
+    "To send you a copy of your result, and to tell you when comparisons against other Queensland businesses become available",
   ],
   [
     "A one-way salted hash of your IP address",
@@ -74,7 +74,7 @@ export default function RealityCheckPrivacyPage() {
       <main className="rc-root rc-sheet">
         <article className="mx-auto max-w-2xl px-5 py-14 sm:px-8 sm:py-20">
           <p className="rc-label" style={{ color: "var(--rc-accent-sm)" }}>
-            AI Reality Check — privacy
+            AI Reality Check privacy
           </p>
           <h1 className="rc-archetype mt-3 font-bold">What we do with your answers.</h1>
 
@@ -99,7 +99,7 @@ export default function RealityCheckPrivacyPage() {
           </P>
           <P>
             No individual business appears in that report. It reports counts, percentages
-            and ranges — never one business&rsquo;s answers, never an email address, never
+            and ranges, never one business&rsquo;s answers, never an email address, never
             anything traceable back to you. Where a sector or size group is too small to
             report without exposing a single respondent, we do not report it at all.
           </P>
@@ -149,7 +149,7 @@ export default function RealityCheckPrivacyPage() {
             <strong style={{ color: "var(--rc-ink)" }}>We do not ask for and do not
             collect</strong> your name, your business name, your phone number, your address,
             your revenue, your budget or your timeline. There are no free-text boxes anywhere
-            in the assessment — every answer is one of four fixed options.
+            in the assessment. Every answer is one of four fixed options.
           </P>
           <P>
             You see your full result on screen without giving an email address. Nothing is
@@ -166,7 +166,7 @@ export default function RealityCheckPrivacyPage() {
             category is sent to our email provider, which stores data in the United States.
             That is an overseas disclosure under Australian Privacy Principle 8. Your
             individual answers are not sent to it. If you would rather that did not happen,
-            do not give us the address — your result is the same either way.
+            do not give us the address. Your result is the same either way.
           </P>
           <P>
             We do not use Google Analytics, advertising pixels or third-party trackers on
@@ -182,8 +182,8 @@ export default function RealityCheckPrivacyPage() {
           </P>
           <P>
             We are considering adding a clearly-labelled AI-written summary in a future
-            version. If we do, it would receive only your scores and category — never free
-            text, because there is none — and this page will say so before that change goes
+            version. If we do, it would receive only your scores and category, never free
+            text because there is none, and this page will say so before that change goes
             live, not after.
           </P>
 
@@ -199,11 +199,11 @@ export default function RealityCheckPrivacyPage() {
                 "De-identified responses",
                 "Kept indefinitely as research data, so a published report stays reproducible",
               ],
-              ["Your email address with our email provider", "Until you unsubscribe or ask us to delete it"],
+              ["Your email address with our email provider", "Until you ask us to delete it"],
             ].map(([what, how]) => (
               <li key={what} className="border-t pt-3 text-[0.9375rem]" style={{ borderColor: "var(--rc-rule)" }}>
                 <span className="font-medium">{what}</span>
-                <span style={{ color: "var(--rc-ink-60)" }}> — {how}</span>
+                <span style={{ color: "var(--rc-ink-60)" }}>: {how}</span>
               </li>
             ))}
           </ul>
@@ -219,14 +219,15 @@ export default function RealityCheckPrivacyPage() {
             If you complete the assessment, work in the kind of business we work with, and
             leave an email address, Anil may email you once about your result and once more
             about a fortnight later. That is a person writing, not an automated sequence.
-            Then it stops. We do not cold-call — we do not call at all unless you ask us to.
+            Then it stops. We do not cold-call. We do not call at all unless you ask us to.
           </P>
 
-          <H2>The monthly briefing</H2>
+          <H2>There is no mailing list</H2>
           <P>
-            The briefing is a separate choice and the box is unticked. You get your PDF and
-            your comparison notification whether or not you tick it. Every briefing carries a
-            one-click unsubscribe, and unsubscribing affects nothing else.
+            Giving us your email address does not sign you up to anything. We do not run a
+            newsletter for this tool. Your address is used for the two things listed above,
+            and for the single personal email described in the previous section if your
+            business is the kind we work with.
           </P>
 
           <H2>Access, correction and deletion</H2>

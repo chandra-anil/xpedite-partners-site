@@ -130,7 +130,7 @@ export default function AiReadyContent() {
               </Cta>
               <p className="mt-3 text-[13px] md:text-sm leading-[1.5] text-white/60 max-w-lg">
                 20 minutes, no cost, no pitch. You leave with a straight answer on what
-                to do and what it would cost — including when the answer is
+                to do and what it would cost, including when the answer is
                 &ldquo;nothing yet&rdquo;.
               </p>
             </div>
@@ -157,7 +157,7 @@ export default function AiReadyContent() {
                   event="scorecard_start"
                   params={{ section: "hero_waitlist" }}
                 >
-                  AI Reality Check — coming shortly. Tell us to let you know
+                  AI Reality Check, coming shortly. Tell us to let you know
                 </Cta>
               )}
             </div>
@@ -301,7 +301,7 @@ export default function AiReadyContent() {
 
         {/* First-party proof — the only demonstrable claim on the page. */}
         <p className="mt-10 border-l-2 border-[#E8632B] pl-5 text-base md:text-[17px] leading-[1.6] text-white font-medium max-w-3xl">
-          We run our own AI systems inside this business — our policy, our register,
+          We run our own AI systems inside this business, with our own policy, register
           our tools. We will show you ours on the call.
         </p>
 
@@ -431,7 +431,7 @@ export default function AiReadyContent() {
             Every service is a fixed price with a defined outcome and a decision point
             at the end. We do not publish prices because the right service depends on
             your size and where you are starting. We do not set the price based on what
-            we think you can afford — same scope, same price, every time. You get the
+            we think you can afford. Same scope, same price, every time. You get the
             number on the first call and in writing before any work starts.
           </p>
           <p className="text-[15px] md:text-base leading-[1.6] text-white/70">
@@ -482,7 +482,7 @@ export default function AiReadyContent() {
                     >
                       {scorecardEnabled
                         ? "Start the free check"
-                        : "Coming shortly — register interest"}
+                        : "Coming shortly, register interest"}
                     </Cta>
                   ) : (
                     <Cta
@@ -559,7 +559,7 @@ export default function AiReadyContent() {
           8. CLOSING CTA
           The principal block used to live here. It now opens the
           Evidence section, on reach: most of the traffic never got
-          this far. What is left is the ask and nothing else — no
+          this far. What is left is the ask and nothing else, with no
           second portrait, no restated quote. Two photographs of the
           same person on one page reads as a bio, not an offer.
           ============================================================ */}

@@ -5,8 +5,8 @@
  * provider is configured — subscribes them.
  *
  * This endpoint exists only AFTER someone has seen their whole result. Nothing
- * is gated behind it. It buys the PDF, the percentile notification when the
- * dataset unlocks, and the briefing if they ticked the box.
+ * is gated behind it. It buys a copy of the result, and the comparison
+ * notification when the dataset unlocks. There is no mailing list.
  */
 
 import { NextResponse } from "next/server";

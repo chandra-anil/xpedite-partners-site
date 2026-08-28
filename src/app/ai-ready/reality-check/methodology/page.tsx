@@ -46,7 +46,7 @@ export default function MethodologyPage() {
       <main className="rc-root rc-sheet">
         <article className="mx-auto max-w-2xl px-5 py-14 sm:px-8 sm:py-20">
           <p className="rc-label" style={{ color: "var(--rc-accent-sm)" }}>
-            AI Reality Check — method, version {INSTRUMENT_VERSION}
+            AI Reality Check method, version {INSTRUMENT_VERSION}
           </p>
           <h1 className="rc-archetype mt-3 font-bold">
             How this tool is built and governed.
@@ -174,7 +174,7 @@ export default function MethodologyPage() {
               const upper = i === arr.length - 1 ? 100 : arr[i + 1].floor;
               return (
                 <li key={band} className="rc-numeral text-[0.9375rem]">
-                  <span className="font-medium">{BAND_LABELS[band]}</span> — {floor} to{" "}
+                  <span className="font-medium">{BAND_LABELS[band]}</span>, {floor} to{" "}
                   {upper === 100 ? "100" : `under ${upper}`}
                 </li>
               );
@@ -199,9 +199,9 @@ export default function MethodologyPage() {
               ["Ready to scale", "All three areas at least Developing."],
               [
                 "Ungoverned adopter",
-                "Governance Emerging, and either people or operating model at least Developing — AI in use with no rules around it.",
+                "Governance Emerging, and either people or operating model at least Developing. AI is in use with no rules around it.",
               ],
-              ["Governed starter", "Governance at least Developing — rules ahead of use."],
+              ["Governed starter", "Governance at least Developing, meaning rules are ahead of use."],
               ["Cautious observer", "Everything else, which at this point is everything Emerging."],
             ].map(([name, rule], i) => (
               <li key={name} className="flex gap-4 border-t pt-4" style={{ borderColor: "var(--rc-rule)" }}>
@@ -252,7 +252,7 @@ export default function MethodologyPage() {
           <P>
             Where we compare against published national figures, the figure is named and
             dated to the survey wave it came from at the point it is used. Where the source
-            publishes a qualifier rather than a number — &ldquo;about half&rdquo; — we
+            publishes a qualifier rather than a number, such as &ldquo;about half&rdquo;, we
             repeat their wording instead of sharpening it into a percentage. And we do not
             publish a statistic nobody here has opened the source for.
           </P>
@@ -286,7 +286,7 @@ export default function MethodologyPage() {
             {[
               "Proving anything to a client, an insurer, a head contractor or a prequalification panel. It is not evidence and it will not survive being used as evidence.",
               "Demonstrating compliance with the essential practices, ISO/IEC 42001, the Privacy Act, or any tender requirement.",
-              "Comparing two businesses. Two owners can answer the same reality differently — one modest, one generous — and both are answering honestly.",
+              "Comparing two businesses. Two owners can answer the same reality differently, one modest and one generous, and both are answering honestly.",
               "Deciding whether to buy a tool, sign a vendor or start a project. It tells you where the gap is, not what to do about it.",
               "Any board, insurer or legal question. Those need someone who has looked at your actual situation.",
             ].map((item) => (
@@ -326,7 +326,7 @@ export default function MethodologyPage() {
               No. Version {INSTRUMENT_VERSION} contains no machine-learning model, no
               language model and no external AI service in the assessment, the scoring or the
               result. It is in the register anyway, because a register that only lists the
-              systems with models in them is not a register — it is a highlight reel.
+              systems with models in them is not a register. It is a highlight reel.
             </p>
 
             <p className="mt-5 font-semibold">What it decides</p>
@@ -339,7 +339,7 @@ export default function MethodologyPage() {
 
             <p className="mt-5 font-semibold">What it does not decide</p>
             <p className="mt-2 leading-[1.7]" style={{ color: "var(--rc-ink-60)" }}>
-              Nothing about you as an individual. It writes nothing — every sentence in your
+              Nothing about you as an individual. It writes nothing. Every sentence in your
               result was written by a person in advance. It does not change the questions
               based on your answers, which is what keeps the dataset comparable. And no score
               triggers a phone call.
@@ -350,7 +350,7 @@ export default function MethodologyPage() {
               Scoring runs on our server. Responses are stored in a database hosted in
               Sydney. There are no free-text fields anywhere in the form. If you give an
               email address, that address and your sector and result category go to our email
-              provider, which stores data in the United States — that is the only thing that
+              provider, which stores data in the United States, which is the only thing that
               leaves Australia. Nothing is sent to any AI provider.
             </p>
 
@@ -372,8 +372,8 @@ export default function MethodologyPage() {
             <p className="mt-5 font-semibold">Planned, and not live</p>
             <p className="mt-2 leading-[1.7]" style={{ color: "var(--rc-ink-60)" }}>
               A future version may add one clearly-labelled section written by a language
-              model. It would receive only your scores and category — never free text,
-              because there is none — and could only restate findings already present in the
+              model. It would receive only your scores and category, never free text,
+              because there is none, and could only restate findings already present in the
               text written by a person. It would not touch your score. This page, the
               disclosure line on the results page and the privacy note would all be updated
               before it went live, not after. If you are reading this, it has not shipped.

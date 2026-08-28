@@ -20,9 +20,9 @@
  *   Phase 2 (100+): report a real Queensland percentile from our own dataset.
  *   Sector cuts only where that cell holds 30 or more responses.
  *
- * The locked state is deliberately shown as a drawn-but-unmarked scale on the
- * results page. An instrument that visibly declines to report on an
- * insufficient sample is demonstrating the discipline the firm sells.
+ * While the comparison is unavailable, the results page says what is being
+ * built and what triggers it. An earlier version drew an empty scale to show
+ * the comparison withheld, which read as missing data rather than as care.
  */
 
 import type { DimensionId } from "./questions";
@@ -78,7 +78,7 @@ export const NATIONAL_REFERENCES: NationalReference[] = [
     claim:
       "Across Australia, 43% of small and medium businesses reported using AI in some form.",
     meets: [1, 2, 3],
-    source: "National AI Centre, SME AI Pulse, December 2025 – February 2026 wave",
+    source: "National AI Centre, SME AI Pulse, December 2025 to February 2026 wave",
     sourceUrl:
       "https://www.ai.gov.au/news-and-insights/blog/ai-adoption-insights-december-2025-february-2026",
     published: "quarter to February 2026",
@@ -89,9 +89,9 @@ export const NATIONAL_REFERENCES: NationalReference[] = [
     questionId: "Q02",
     dimension: "people",
     claim:
-      "Only 8% have AI embedded across multiple parts of the business — the level this question's top answer describes.",
+      "Only 8% have AI embedded across multiple parts of the business, which is the level this question's top answer describes.",
     meets: [3],
-    source: "National AI Centre, SME AI Pulse, December 2025 – February 2026 wave",
+    source: "National AI Centre, SME AI Pulse, December 2025 to February 2026 wave",
     sourceUrl:
       "https://www.ai.gov.au/news-and-insights/blog/ai-adoption-insights-december-2025-february-2026",
     published: "quarter to February 2026",
@@ -104,7 +104,7 @@ export const NATIONAL_REFERENCES: NationalReference[] = [
     claim:
       "Nationally, about half of businesses using AI check its output before it reaches customers.",
     meets: [2, 3],
-    source: "National AI Centre, SME AI Pulse, December 2025 – February 2026 wave",
+    source: "National AI Centre, SME AI Pulse, December 2025 to February 2026 wave",
     sourceUrl:
       "https://www.ai.gov.au/news-and-insights/blog/ai-adoption-insights-december-2025-february-2026",
     published: "quarter to February 2026",
@@ -125,20 +125,27 @@ export function publishedReferences(): NationalReference[] {
 /* ------------------------------------------------------------------ */
 
 export const QLD_BENCHMARK = {
-  heading: "Queensland benchmark",
+  heading: "How you compare",
   /**
-   * Shown while the dataset is below threshold. Deliberately does not include a
-   * live response count: a count of seven in week one invites the reader to
-   * judge the sample rather than the promise, and the promise is the point.
+   * Two failed versions preceded this one, and both failures are worth keeping
+   * in mind.
+   *
+   * The first led with what we could not yet report, and read as an immature
+   * tool rather than a careful one. The second replaced it with "Coming soon",
+   * which was worse: it is the one phrase here that could sit on any half-built
+   * website, it is unfalsifiable, and it removed the countable condition that
+   * made leaving an email worth doing.
+   *
+   * This version names the condition without framing it as a shortcoming. It
+   * says what is being built and what triggers it, and never says we lack data.
    */
-  lockedLine: "Reported at 100 responses.",
+  lockedLine: "Reported once 100 businesses have taken part.",
   lockedExplainer:
-    "We won't publish a Queensland percentile until this dataset can carry one. Below 100 responses a percentile is a number with nothing behind it, and you would have no way of knowing that.",
+    "We are building a picture of how Queensland businesses are actually going with AI, from the businesses completing this check. Once 100 have taken part you will be able to see where you sit against businesses of your size and sector, and we will send you yours.",
   unlockedExplainer:
-    "Your position against other Queensland businesses that have completed this. Sector comparisons appear only where that sector has at least 30 responses.",
-  /** Shown next to the email field as the reason to leave one. */
-  notifyPromise:
-    "Leave an email and we'll send your percentile when the dataset reaches 100.",
+    "Where you sit against other Queensland businesses that have completed this. Sector comparisons appear only where that sector has enough responses to be meaningful.",
+  /** Shown next to the email field as a reason to leave one. */
+  notifyPromise: "Leave an email address and we will send you your comparison when it is ready.",
 };
 
 /* ------------------------------------------------------------------ */
@@ -168,4 +175,4 @@ export const FREE_PROGRAMS = [
   },
 ] as const;
 
-export const FREE_PROGRAMS_CAVEAT = "Check eligibility with each — it changes.";
+export const FREE_PROGRAMS_CAVEAT = "Check eligibility with each, because it changes.";

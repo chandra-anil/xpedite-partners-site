@@ -36,6 +36,7 @@ import {
   PROFESSIONAL_OBLIGATIONS,
   PROFESSIONAL_OBLIGATIONS_DISCLAIMER,
   SECTOR_LINES,
+  SECTOR_LINE_PREFIX,
   SECTOR_NEXT_STEP,
   SECTOR_RISKS,
   USE_CASES,
@@ -88,8 +89,23 @@ export interface ResultsView {
   /** Shown as a full-width band above the CTA, for Compounding leaders only. */
   mayNotNeedUs?: string;
   cta:
-    | { variant: "in_segment"; heading: string; body: string; button: string; subline: string }
-    | { variant: "out_of_segment"; heading: string; body: string; subline: string };
+    | {
+        variant: "in_segment";
+        heading: string;
+        body: string;
+        button: string;
+        subline: string;
+        sublineWhenAlreadySaid?: string;
+      }
+    | {
+        variant: "out_of_segment";
+        heading: string;
+        body: string;
+        subline: string;
+        sublineWhenAlreadySaid?: string;
+      };
+  /** Wording differs by sector: firms are firms, not businesses. */
+  sectorLinePrefix?: string;
   sector?: {
     key: SectorKey;
     useCases: UseCaseBlock;
@@ -135,7 +151,14 @@ const REGION_LABELS: Record<string, string> = {
   brisbane: "Greater Brisbane",
   gc_sc: "Gold Coast or Sunshine Coast",
   regional_qld: "Regional Queensland",
-  interstate: "Outside Queensland",
+  nsw: "New South Wales",
+  vic: "Victoria",
+  wa: "Western Australia",
+  sa: "South Australia",
+  tas: "Tasmania",
+  act: "Australian Capital Territory",
+  nt: "Northern Territory",
+  overseas: "Outside Australia",
 };
 
 function label(map: Record<string, string>, key: string | undefined): string {
@@ -228,6 +251,7 @@ export function buildResults(
       region: label(REGION_LABELS, context.C4),
     },
     roleFraming: ROLE_FRAMING[role],
+    sectorLinePrefix: sectorKey ? SECTOR_LINE_PREFIX[sectorKey] : undefined,
     dimensions,
     risk,
     strength,

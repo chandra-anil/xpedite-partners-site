@@ -2,22 +2,20 @@
 
 import { useState } from "react";
 import { EMAIL_EXCHANGE } from "@/data/reality-check/narrative";
-import { QLD_BENCHMARK } from "@/data/reality-check/benchmarks";
 import { track } from "@/lib/analytics";
 
 /**
- * The email ask. It sits AFTER the whole result, and it gates nothing.
+ * The email ask. It sits after the whole result, and it gates nothing.
  *
- * That was the contested call in the spec and it went this way deliberately:
- * for an audience whose main objection is distrust, holding someone's own
- * answers hostage is exactly the bait they expected, and it would contradict
- * "the advisor who says no" on the firm's first product. What the address buys
- * is the PDF and the percentile notification — things you can only get later,
- * not things being withheld now.
+ * That was the contested call in the spec and it went this way deliberately.
+ * For an audience whose main objection is distrust, holding someone's own
+ * answers back would be exactly the bait they expected. What the address buys
+ * is a copy they can keep and the comparison when it is ready, both of which
+ * can only be delivered later. Nothing is being withheld now.
  *
- * The briefing checkbox is unticked and separate. The Spam Act wants express
- * consent, and a firm selling governance cannot have sloppy consent in its own
- * funnel.
+ * There is no newsletter sign-up here. A monthly briefing was specced, but
+ * committing to one before it exists would be a promise the firm has not
+ * decided to keep yet.
  */
 
 type State = "idle" | "sending" | "sent" | "error";
@@ -30,14 +28,12 @@ export default function EmailExchange({
   persistent: boolean;
 }) {
   const [email, setEmail] = useState("");
-  const [consent, setConsent] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [state, setState] = useState<State>("idle");
   const [message, setMessage] = useState("");
 
   // With no database wired up there is no stored result to attach an address
-  // to, and no way to honour the percentile promise. Saying so is better than
-  // taking the address and quietly dropping it.
+  // to. Saying so is better than taking the address and quietly dropping it.
   const canSubmit = persistent && token !== "";
 
   async function onSubmit(e: React.FormEvent) {
@@ -54,7 +50,7 @@ export default function EmailExchange({
         body: JSON.stringify({
           token,
           email,
-          consentBriefing: consent,
+          consentBriefing: false,
           website: honeypot,
         }),
       });
@@ -64,24 +60,24 @@ export default function EmailExchange({
         setState("error");
         setMessage(
           data?.error === "invalid_email"
-            ? "That address doesn't look right. Check it and try again."
-            : "That didn't send. Try again in a moment."
+            ? "That address does not look right. Check it and try again."
+            : "That did not send. Try again in a moment."
         );
         return;
       }
 
       setState("sent");
-      // Tell the truth about what actually happened. If no provider is wired up
-      // the address is stored but nothing was emailed, and claiming otherwise
-      // is the kind of small lie this whole product is arguing against.
+      // Tell the truth about what actually happened. If no provider is wired
+      // up the address is stored but nothing was emailed, and claiming
+      // otherwise is the kind of small lie this product argues against.
       setMessage(
         data?.subscribed
           ? EMAIL_EXCHANGE.success
-          : "Saved. The mailing setup isn't live yet, so Anil will send this one by hand."
+          : "Saved. Email sending is not switched on yet, so Anil Chandra, who runs Xpedite Partners, will send it to you himself."
       );
     } catch {
       setState("error");
-      setMessage("That didn't send. Try again in a moment.");
+      setMessage("That did not send. Try again in a moment.");
     }
   }
 
@@ -113,7 +109,8 @@ export default function EmailExchange({
         </p>
       ) : (
         <form onSubmit={onSubmit} className="mt-6">
-          {/* Honeypot. Off-screen rather than display:none, which some bots skip. */}
+          {/* Honeypot. Positioned off-screen rather than display:none, which
+              some bots skip. */}
           <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
             <label htmlFor="rc-website">Website</label>
             <input
@@ -140,6 +137,13 @@ export default function EmailExchange({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={!canSubmit}
+              // Tie the error and the "not switched on" note to the field, so a
+              // screen-reader user hears why the input is refusing them rather
+              // than an announcement with nothing to attach it to.
+              aria-invalid={state === "error" || undefined}
+              aria-describedby={
+                state === "error" ? "rc-email-error" : !canSubmit ? "rc-email-note" : undefined
+              }
               className="min-h-[48px] flex-1 border bg-transparent px-3.5 py-2.5 text-base disabled:opacity-50"
               style={{ borderColor: "var(--rc-rule-strong)", color: "var(--rc-ink)" }}
             />
@@ -149,30 +153,32 @@ export default function EmailExchange({
               className="min-h-[48px] rounded-lg px-6 py-3 text-base font-semibold text-white transition-colors hover:brightness-90 disabled:opacity-50"
               style={{ background: "var(--rc-accent-lg)" }}
             >
-              {state === "sending" ? "Sending…" : EMAIL_EXCHANGE.button}
+              {state === "sending" ? "Sending" : EMAIL_EXCHANGE.button}
             </button>
           </div>
 
-          <label className="mt-4 flex cursor-pointer gap-3 text-[0.9375rem] leading-[1.5]">
-            <input
-              type="checkbox"
-              checked={consent}
-              onChange={(e) => setConsent(e.target.checked)}
-              disabled={!canSubmit}
-              className="mt-1 h-4 w-4 flex-none"
-            />
-            <span>{EMAIL_EXCHANGE.consentLabel}</span>
-          </label>
-
+          {/* This state should not survive to launch. With the save button
+              removed, email is the only route to a copy, so a reader here can
+              take the whole check and leave with nothing they can keep. It is
+              on the launch checklist for that reason. Until then, say what to
+              do rather than telling someone to leave a browser tab open. */}
           {!canSubmit && (
-            <p className="mt-3 text-[0.875rem]" style={{ color: "var(--rc-ink-60)" }}>
-              Email delivery isn&rsquo;t switched on yet. Your result is on this page — use
-              &ldquo;Save as PDF&rdquo; below to keep a copy.
+            <p id="rc-email-note" className="mt-3 text-[0.875rem]" style={{ color: "var(--rc-ink-60)" }}>
+              Email is not switched on yet. Print this page from your browser to keep a copy,
+              or write to {" "}
+              <a
+                href="mailto:info@xpeditepartners.com.au?subject=AI%20Reality%20Check%20result"
+                className="underline underline-offset-2"
+                style={{ color: "var(--rc-accent-sm)" }}
+              >
+                info@xpeditepartners.com.au
+              </a>{" "}
+              and Anil will send you one.
             </p>
           )}
 
           {state === "error" && (
-            <p className="mt-3 text-[0.875rem]" role="alert" style={{ color: "var(--rc-accent-sm)" }}>
+            <p id="rc-email-error" className="mt-3 text-[0.875rem]" role="alert" style={{ color: "var(--rc-accent-sm)" }}>
               {message}
             </p>
           )}
@@ -181,28 +187,10 @@ export default function EmailExchange({
             {EMAIL_EXCHANGE.reassurance}
           </p>
           <p className="mt-2 text-[0.8125rem] leading-[1.6]" style={{ color: "var(--rc-ink-60)" }}>
-            {EMAIL_EXCHANGE.privacyMicrocopy} {QLD_BENCHMARK.notifyPromise}
+            {EMAIL_EXCHANGE.privacyMicrocopy}
           </p>
         </form>
       )}
-
-      <div className="mt-6">
-        <button
-          type="button"
-          onClick={() => {
-            track("scorecard_print", { section: "results" });
-            window.print();
-          }}
-          className="min-h-[48px] border px-6 py-3 text-[0.9375rem] font-semibold transition-colors hover:bg-black/5"
-          style={{ borderColor: "var(--rc-rule-strong)", color: "var(--rc-ink)" }}
-        >
-          Save as PDF
-        </button>
-        <p className="mt-2 text-[0.8125rem]" style={{ color: "var(--rc-ink-60)" }}>
-          Prints as a one-page document. Same result you&rsquo;re reading — nothing is held
-          back.
-        </p>
-      </div>
     </div>
   );
 }
