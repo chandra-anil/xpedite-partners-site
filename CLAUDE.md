@@ -21,7 +21,8 @@ Follow `~/code/CLAUDE.md` → "Shipping a change" (the `ship` skill), with these
 - There is no VPS. Merging to `master` runs the `deploy` job in `.github/workflows/ci.yml`, which deploys to
   Vercel production with the `VERCEL_TOKEN` repo secret and then checks that key pages answer 200.
   Watch it with `gh run list --branch master --limit 1` and `timeout 1500 gh run watch <id> --exit-status`;
-  the deploy log prints `deployed <sha> -> <url>`.
+  the deploy log prints `deployed <sha> -> <url>`. If two merges land close together, the older queued
+  deploy ends `cancelled` (superseded by the newer one): that is expected, not something to fix forward.
 - Never run `vercel deploy` from this machine; redeploy with `gh workflow run ci.yml --ref master`.
 - Visual changes: check them in the dev server (or a screenshot) before opening the PR — there are no
   Vercel previews for PRs.

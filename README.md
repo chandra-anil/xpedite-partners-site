@@ -34,7 +34,7 @@ Corporate website for Xpedite Partners, rebuilt in Next.js and deployed on Verce
 ## TODO
 
 - [ ] Compress oversized images (`whatwedo-4.jpg`, `why-us.jpg`)
-- [ ] Final SEO pass before domain cutover
+- [ ] Final SEO pass
 - [ ] Add/update service case studies and social proof
 
 ## Links

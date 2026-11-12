@@ -52,7 +52,8 @@ jobs:
           test -n "$VERCEL_TOKEN" || { echo "::error::the VERCEL_TOKEN secret is not set on this repo"; exit 1; }
           api() { curl -fsS -H "Authorization: Bearer $VERCEL_TOKEN" "https://api.vercel.com$1"; }
           # The project can sit in any team the token can see; take the first team that has it.
-          for team in $(api /v2/teams | jq -r '.teams[].id'); do
+          teams=$(api /v2/teams) || { echo "::error::Vercel rejected VERCEL_TOKEN (GET /v2/teams failed)"; exit 1; }
+          for team in $(jq -r '.teams[].id' <<<"$teams"); do
             if project=$(api "/v9/projects/$VERCEL_PROJECT?teamId=$team" 2>/dev/null); then
               echo "VERCEL_ORG_ID=$team" >> "$GITHUB_ENV"
               echo "VERCEL_PROJECT_ID=$(jq -r .id <<<"$project")" >> "$GITHUB_ENV"
@@ -68,6 +69,10 @@ jobs:
         run: |
           # An exact CLI version: the token reaches the whole Vercel account, so bump this on purpose.
           # Vercel builds the uploaded source with the project's own settings and environment variables.
+          # Drop the git metadata first: Vercel refuses a deploy whose commit author is not a member of the
+          # team, and squash-merge commits can carry a GitHub noreply address. The deploy is credited to the
+          # token owner instead.
+          rm -rf .git
           url=$(npx --yes vercel@65.12.1 deploy --prod --yes --token "$VERCEL_TOKEN")
           echo "deployed ${GITHUB_SHA::7} -> $url"
       - name: The live site answers
