@@ -16,22 +16,23 @@ Corporate website for Xpedite Partners, rebuilt in Next.js and deployed on Verce
 
 ## Key Details
 
-- **Live URL:** https://xpedite-partners-site.vercel.app
-- **Domain:** xpeditepartners.com.au (still on Wix, cutover pending)
-- **Repo:** github.com/chandra-anil/xpedite-partners-site (private)
-- **Workspace clone:** `projects/xpedite-partners-site/`
+- **Live URL:** https://xpeditepartners.com.au (also https://xpedite-partners-site.vercel.app)
+- **Repo:** github.com/chandra-anil/xpedite-partners-site (public)
+- **Local clone:** `~/code/xpedite-partners`
+- **Deploy:** merge to `master` → GitHub Actions → Vercel production (see ONBOARDING.md → Deployment)
 - **Stack:** Next.js 16 + React 19 + TypeScript + Tailwind CSS v4 + Vercel
-- **Full technical reference:** See `TOOLS.md` → Xpedite Partners Website section
+- **Full technical reference:** `ONBOARDING.md` (rules, structure, deploy) and `XP handover.md` (component detail)
 
 ## Completed
 
 - [x] Website rebuilt from Wix to Next.js
 - [x] Vercel deployment configured
 - [x] SSH deploy key and repo wiring configured
+- [x] xpeditepartners.com.au pointed to Vercel
+- [x] CI (lint + build) on every PR; deploy on merge to `master` via GitHub Actions
 
 ## TODO
 
-- [ ] Point xpeditepartners.com.au to Vercel
 - [ ] Compress oversized images (`whatwedo-4.jpg`, `why-us.jpg`)
 - [ ] Final SEO pass before domain cutover
 - [ ] Add/update service case studies and social proof
@@ -42,6 +43,3 @@ Corporate website for Xpedite Partners, rebuilt in Next.js and deployed on Verce
 - [GitHub Repo](https://github.com/chandra-anil/xpedite-partners-site)
 - [Handover Doc](HANDOVER.md)
 
----
-
-_Project folder: `projects/xpedite-partners-site/`_

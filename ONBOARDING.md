@@ -7,10 +7,10 @@ For developers and AI agents contributing to the public website.
 ## Quick Start
 
 ```bash
-cd projects/xpedite-partners-site
-npm install
+cd ~/code/xpedite-partners
+npm ci
 npm run dev          # Local dev server at http://localhost:3000
-npm run build        # Production build (must pass before deploying)
+npm run lint && npm run build   # the checks CI runs on every PR
 ```
 
 ## Stack
@@ -23,7 +23,7 @@ npm run build        # Production build (must pass before deploying)
 | Styling | Tailwind CSS | v4 |
 | Animations | Framer Motion | 12.x |
 | Hosting | Vercel | Production |
-| Domain | xpeditepartners.com.au | (currently on Vercel, Wix DNS pending) |
+| Domain | xpeditepartners.com.au | on Vercel (`www.` redirects to the apex) |
 
 ## Repo Structure
 
@@ -94,20 +94,17 @@ public/
 
 ## Deployment
 
-```bash
-# Build must pass first
-npm run build
+Production deploys **only** through GitHub Actions (`.github/workflows/ci.yml`), never by hand:
 
-# Deploy to Vercel production
-npx vercel --yes --prod --token $VERCEL_TOKEN
-```
+1. Branch from `master`, make the change, run `npm run lint && npm run build`.
+2. Open a PR. CI runs lint + build.
+3. Squash-merge when CI is green. The `deploy` job uploads `master` to the Vercel project
+   `xpedite-partners-site` (Vercel builds it with the project's own env vars), then checks that the
+   live pages answer 200.
+4. To redeploy without a change: Actions → "CI and deploy" → Run workflow (on `master`).
 
-**Git author MUST be:** `Anil Chandra <chandra.anil@gmail.com>` — Vercel rejects other authors.
-
-```bash
-git -c user.name="Anil Chandra" -c user.email="chandra.anil@gmail.com" commit -m "your message"
-git push
-```
+The workflow needs one repo secret, `VERCEL_TOKEN` (a Vercel account token). Vercel's Git integration
+is not connected, so pushes do not deploy by themselves, and PRs get no Vercel preview.
 
 ## Hard Rules
 
@@ -116,7 +113,7 @@ git push
 - **Screenshots must show output/results views**, not empty input screens
 - **No "See it in action"** as a section heading — use outcome-oriented language
 - **Avoid weak numeric claims** that could undermine tool credibility
-- **Test locally** (`npm run build`) before pushing — broken builds block the team
+- **Test locally** (`npm run lint && npm run build`) before pushing; CI blocks the deploy if either fails
 - **All images in `public/images/`** — self-hosted, no external CDN dependencies
 
 ## Related
