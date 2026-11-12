@@ -49,11 +49,12 @@ jobs:
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
+          VERCEL_TOKEN=${VERCEL_TOKEN//[[:space:]]/}   # a pasted secret can carry a trailing newline
           test -n "$VERCEL_TOKEN" || { echo "::error::the VERCEL_TOKEN secret is not set on this repo"; exit 1; }
           body="$RUNNER_TEMP/vercel.json"
           # GET a Vercel API path; prints the HTTP status, leaves the response in $body.
           api() { curl -sS -o "$body" -w '%{http_code}' -H "Authorization: Bearer $VERCEL_TOKEN" "https://api.vercel.com$1"; }
-          why() { jq -r '.error | "\(.code // "?"): \(.message // "?")"' "$body" 2>/dev/null || echo "unreadable response"; }
+          why() { jq -r '.error | "\(.code // "?"): \(.message // "?")\(if .invalidToken then " (token invalid)" else "" end)"' "$body" 2>/dev/null || echo "unreadable response"; }
           found() {
             echo "VERCEL_ORG_ID=$(jq -r .accountId "$body")" >> "$GITHUB_ENV"
             echo "VERCEL_PROJECT_ID=$(jq -r .id "$body")" >> "$GITHUB_ENV"
@@ -86,6 +87,7 @@ jobs:
           # team, and squash-merge commits can carry a GitHub noreply address. The deploy is credited to the
           # token owner instead.
           rm -rf .git
+          VERCEL_TOKEN=${VERCEL_TOKEN//[[:space:]]/}
           url=$(npx --yes vercel@65.12.1 deploy --prod --yes --token "$VERCEL_TOKEN")
           echo "deployed ${GITHUB_SHA::7} -> $url"
       - name: The live site answers
