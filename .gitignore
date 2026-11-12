@@ -44,3 +44,7 @@ public/images/hero-bg.mov
 next-env.d.ts
 
 .vercel
+
+# Claude Code: only the shared launch config is tracked; local settings and session files stay out
+.claude/*
+!.claude/launch.json

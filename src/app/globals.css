@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" source("..");  /* scan src/ only: every class lives there */
 
 @theme inline {
   --color-background: #ffffff;

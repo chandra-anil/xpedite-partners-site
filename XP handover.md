@@ -6,16 +6,16 @@
 npm install
 npm run dev          # http://localhost:3000
 npm run build        # production build
-npx vercel --yes --prod  # deploy to Vercel
+# deploy: merge to master; GitHub Actions deploys (see ONBOARDING.md → Deployment)
 ```
 
 ## Project Overview
 
 Marketing website for Xpedite Partners, a specialist delivery consultancy based in Brisbane, Australia. Reproduced from a Wix-hosted original at xpeditepartners.com.au.
 
-- **Live site:** https://xpedite-partners-site.vercel.app
+- **Live site:** https://xpeditepartners.com.au (also https://xpedite-partners-site.vercel.app)
 - **Repo:** https://github.com/chandra-anil/xpedite-partners-site
-- **Original (Wix):** https://www.xpeditepartners.com.au
+- **Original (Wix):** retired; the domain now points to Vercel
 
 ## Tech Stack
 
@@ -157,9 +157,7 @@ Defined in `globals.css` under `@theme inline`:
 ## Deployment
 
 ### Vercel
-```bash
-npx vercel --yes --prod
-```
+Deploys run only from GitHub Actions on merge to `master` (see ONBOARDING.md → Deployment); never run `vercel` by hand.
 
 - `.vercelignore` excludes `public/images/hero-bg.mov` (206MB) and root `/images/` source folder
 - `.gitignore` also excludes `hero-bg.mov`

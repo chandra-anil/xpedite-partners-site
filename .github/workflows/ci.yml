@@ -1,0 +1,86 @@
+name: CI and deploy
+
+# Every pull request and every push to master runs the same checks (lint + production build).
+# A push to master that passes them deploys to Vercel production (xpeditepartners.com.au).
+# Vercel's own Git integration is not connected, so this job is the only way the site goes live.
+# Run it by hand from the Actions tab (workflow_dispatch) to redeploy master.
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+  deploy:
+    needs: check
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    env:
+      VERCEL_PROJECT: xpedite-partners-site
+      SITE_URL: https://xpeditepartners.com.au
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Find the Vercel project
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          test -n "$VERCEL_TOKEN" || { echo "::error::the VERCEL_TOKEN secret is not set on this repo"; exit 1; }
+          api() { curl -fsS -H "Authorization: Bearer $VERCEL_TOKEN" "https://api.vercel.com$1"; }
+          # The project can sit in any team the token can see; take the first team that has it.
+          teams=$(api /v2/teams) || { echo "::error::Vercel rejected VERCEL_TOKEN (GET /v2/teams failed)"; exit 1; }
+          for team in $(jq -r '.teams[].id' <<<"$teams"); do
+            if project=$(api "/v9/projects/$VERCEL_PROJECT?teamId=$team" 2>/dev/null); then
+              echo "VERCEL_ORG_ID=$team" >> "$GITHUB_ENV"
+              echo "VERCEL_PROJECT_ID=$(jq -r .id <<<"$project")" >> "$GITHUB_ENV"
+              echo "project $VERCEL_PROJECT is $(jq -r .id <<<"$project") in team $team"
+              exit 0
+            fi
+          done
+          echo "::error::no Vercel team visible to VERCEL_TOKEN has a project named $VERCEL_PROJECT"
+          exit 1
+      - name: Deploy to production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          # An exact CLI version: the token reaches the whole Vercel account, so bump this on purpose.
+          # Vercel builds the uploaded source with the project's own settings and environment variables.
+          # Drop the git metadata first: Vercel refuses a deploy whose commit author is not a member of the
+          # team, and squash-merge commits can carry a GitHub noreply address. The deploy is credited to the
+          # token owner instead.
+          rm -rf .git
+          url=$(npx --yes vercel@65.12.1 deploy --prod --yes --token "$VERCEL_TOKEN")
+          echo "deployed ${GITHUB_SHA::7} -> $url"
+      - name: The live site answers
+        run: |
+          fail=0
+          for p in / /frameworks /path-to-value /industries/mining /sitemap.xml; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -m 20 "$SITE_URL$p" || true)
+            echo "$SITE_URL$p $code"
+            [ "$code" = 200 ] || fail=1
+          done
+          exit $fail
